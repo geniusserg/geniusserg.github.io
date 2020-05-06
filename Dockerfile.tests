@@ -1,0 +1,7 @@
+FROM ubuntu:latest
+COPY ./html ./work
+RUN pip install --upgrade pip
+RUN pip install wheel
+RUN pip install curl
+RUN pip install -U selenium
+CMD python /work/test.py
