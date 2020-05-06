@@ -23,7 +23,7 @@ jobs:
   build_test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions@checkout@v2
+    - uses: actions/checkout@v2
     - name: Build docker image with testing framework
       run: docker build -t ${{ secrets.DOCKER_USERNAME}}/car_config:testing Dockerfile.test
       
