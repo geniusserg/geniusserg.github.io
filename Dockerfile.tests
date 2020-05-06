@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-COPY ./html ./work
+COPY ./test.py /work
 RUN pip install --upgrade pip
 RUN pip install wheel
 RUN pip install curl
