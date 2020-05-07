@@ -1,4 +1,4 @@
 FROM ubuntu:latest
 COPY . .
-RUN pip install selenium
+RUN python -m pip install selenium
 CMD ./test.py
