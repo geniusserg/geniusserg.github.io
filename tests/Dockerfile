@@ -1,2 +1,4 @@
-FROM nginx:alpine
-COPY ./html /usr/share/nginx/html
+FROM ubuntu:latest
+COPY . .
+RUN pip install selenium
+CMD ./test.py
