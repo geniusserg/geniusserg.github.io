@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the site in the container
-      run: docker build -t ${{ secrets.DOCKER_USERNAME}}/car_config:nightly .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME}}/car_config:nightly ./html
     - name: Deploy ready package
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin;   docker push ${{ secrets.DOCKER_USERNAME }}/car_config:nightly
 
@@ -41,6 +41,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the site in the container
-      run: docker build -t ${{ secrets.DOCKER_USERNAME}}/car_config:latest .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME}}/car_config:latest ./html
     - name: Deploy ready package
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin;   docker push ${{ secrets.DOCKER_USERNAME }}/car_config:latest
