@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Launch local server
-      run: docker run -v /home/runner/work/coursework/coursework/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
+      run: docker run -v /home/runner/work/coursework/coursework/html:/usr/share/nginx/html:ro  -p 80:80 -d nginx
     - name: Run the testing image with web driver Chrome
-      run: docker run -p 4444:4444 -p 8080:8080 -v /dev/shm:/dev/shm -v /home/runner/work/coursework/coursework/tests:/work -w /work selenium/standalone-chrome:3.141.59-20200409 python3 -m unittest test.py
+      run: docker run -p 4444:4444 -p 80:80 -v /dev/shm:/dev/shm -v /home/runner/work/coursework/coursework/tests:/work -w /work selenium/standalone-chrome:3.141.59-20200409 python3 -m unittest test.py
       
   deploy:
     runs-on: ubuntu-latest
