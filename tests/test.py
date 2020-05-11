@@ -1,16 +1,22 @@
 import unittest
 from selenium import webdriver
-import time
+from selenium.common.exceptions import NoSuchElementException
 
-class TestBrowserOpen(unittest.TestCase):
-    def test_a(self):
-        driver = webdriver.Remote()
-        driver.maximize_window()
-        driver.get("https://localhost:80")
-        title = driver.title()
-        print(title)
-        time.sleep(3)
-        driver.close()
-        
+class TestTemplate(unittest.TestCase):
+    def setUp(self):
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
+        self.driver.implicitly_wait(10)
+
+    def tearDown(self):
+        self.driver.quit()
+
+    def test_case_1(self):
+        self.driver.get('https://localhost:80')
+
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplate)
+    unittest.TextTestRunner(verbosity=2).run(suite)
