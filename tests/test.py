@@ -15,7 +15,10 @@ class TestTemplate(unittest.TestCase):
         self.driver.quit()
 
     def test_case_1(self):
-        self.driver.get('https://localhost:80')
+        self.driver.get('https://localhost:8080')
+        title = self.driver.title
+        self.assertEqual(title, 'CarConfiguration')
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestTemplate)
