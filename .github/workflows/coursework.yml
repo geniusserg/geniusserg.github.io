@@ -15,8 +15,8 @@ jobs:
       run: docker run -v /home/runner/work/coursework/coursework/html:/usr/share/nginx/html:ro  -p 80:80 -d nginx
     - name: Run the testing image with web driver Chrome
       run: |
-        docker run -w /work -p 4444:4444 -v /dev/shm:/dev/shm -v /home/runner/work/coursework/coursework/tests:/work selenium/standalone-chrome:3.141.59-20200409 python3 ./test.py
         ls /home/runner/work/coursework/coursework/tests
+        docker run -w /work -p 4444:4444 -v /dev/shm:/dev/shm -v /home/runner/work/coursework/coursework/tests:/work selenium/standalone-chrome:3.141.59-20200409 python3 ./test.py
   deploy:
     runs-on: ubuntu-latest
     needs: [test_main]
