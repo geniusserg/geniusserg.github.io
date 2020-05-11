@@ -12,11 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Launch local server
-      run: docker run --network=host -v /home/runner/work/coursework/coursework/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
+      run: docker run --network=host -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Run the testing image with web driver Chrome
       run: |
         ls /home/runner/work/coursework/coursework/tests
-        docker run --network=host -w /work -p 4444:4444 -p 8080:8080 -v /dev/shm:/dev/shm -v /home/runner/work/coursework/coursework/tests:/work selenium/standalone-chrome:3.141.59-20200409 python3 ./test.py
+        docker run --network=host -w /work -p 4444:4444 -p 8080:8080 -v /dev/shm:/dev/shm -v $GITHUB_WORKSPACE/tests:/work selenium/standalone-chrome:3.141.59-20200409 python3 ./test.py
   deploy:
     runs-on: ubuntu-latest
     needs: [test_main]
