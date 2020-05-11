@@ -13,3 +13,6 @@ class TestBrowserOpen(unittest.TestCase):
             assert BaseException
         time.sleep(3)
         driver.close()
+        
+if __name__ == '__main__':
+    unittest.main()
