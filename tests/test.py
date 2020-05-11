@@ -1,5 +1,5 @@
 import unittest
-from selenium import webdriver
+from Selenium import webdriver
 import time
 
 class TestBrowserOpen(unittest.TestCase):
