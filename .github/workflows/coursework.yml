@@ -15,8 +15,6 @@ jobs:
       run: docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page
       run: curl -l http://localhost:8080/index.html
-    - name: Run the testing image with web driver Chrome
-      run: docker run ubuntu:latest wget http://localhost:8080
     - name: Download Chrome Web Driver
       run: apt install chromium-chromedriver
     - name: Install Selenium
