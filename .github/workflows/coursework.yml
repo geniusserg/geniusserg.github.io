@@ -15,15 +15,15 @@ jobs:
       run: docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page
       run: curl -l http://localhost:8080/index.html
-    - name: Download Chrome Web Driver
+    - name: Download Chrome Browser
       run: |
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
         sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
         sudo apt-get update
         sudo apt-get install google-chrome-stable
-    - name: Download Chrome WEB DRIVER
+    - name: Download Chrome Driver
       run: |
-        wget -O https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip 
+        curl https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip 
         unzip chromedriver_linux64.zip -d /opt/chrome_driver
         ls /opt/chrome_driver
         chmod +x /opt/chrome_driver/chromedriver
