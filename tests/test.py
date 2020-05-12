@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+import time
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):
@@ -10,12 +11,15 @@ class TestTemplate(unittest.TestCase):
         chrome_options.add_argument('--disable-gpu')
         self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver.implicitly_wait(10)
+        self.driver.get('https://localhost:8080')
+        time.sleep(10)
 
     def tearDown(self):
         self.driver.quit()
 
     def test_case_1(self):
-        self.driver.get('https://localhost:8080')
+        a = self.driver.find_element_by_class_name('weqrwe')
+        print(a.text)
         title = self.driver.title
         self.assertEqual(title, 'CarConfiguration')
 
