@@ -8,4 +8,6 @@ class TestMain(template.TestTemplate):
         self.assertEqual(title, "WebCarConfigurator")
 
     def test_case_2(self):
+        input_discount = self.driver.find_element_by_id("DiscountValue_input")
+        self.assertEqual(input_discount.text, 0)
         
