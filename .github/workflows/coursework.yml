@@ -16,7 +16,7 @@ jobs:
     - name: Ping web page
       run: curl -l http://localhost:8080/index.html
     - name: Run the testing image with web driver Chrome
-      run: docker run ubuntu:latest curl http://localhost:8080
+      run: docker run ubuntu:latest wget http://localhost:8080
     - name: Run the testing image with web driver Chrome
       run: docker run -w /work --network=host -v /dev/shm:/dev/shm -v $GITHUB_WORKSPACE/tests:/work joyzoursky/python-chromedriver:3.7-alpine3.8-selenium curl http://localhost:8080
   deploy:
