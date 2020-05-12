@@ -14,7 +14,9 @@ jobs:
     - name: Launch local server
       run: docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page
-      run: curl http://localhost:8080/index.html
+      run: curl -l http://localhost:8080/index.html
+    - name: Run the testing image with web driver Chrome
+      run: docker run -it ubuntu:latest curl http://localhost:8080
     - name: Run the testing image with web driver Chrome
       run: docker run -w /work --network=host -v /dev/shm:/dev/shm -v $GITHUB_WORKSPACE/tests:/work joyzoursky/python-chromedriver:3.7-alpine3.8-selenium curl http://localhost:8080
   deploy:
