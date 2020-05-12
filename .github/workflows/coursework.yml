@@ -27,6 +27,7 @@ jobs:
         unzip chromedriver_linux64.zip -d /opt/chrome_driver
         ls /opt/chrome_driver
         chmod +x /opt/chrome_driver/chromedriver
+        export PATH=$PATH:/opt/chrome_driver/chromedriver;
     - name: Install selenium for python
       run: |
         pip install --upgrade pip
