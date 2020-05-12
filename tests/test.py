@@ -18,7 +18,7 @@ class TestTemplate(unittest.TestCase):
     def test_case_1(self):
         self.driver.get('http://localhost:8080')
         title = self.driver.title
-        self.assertEqual(title, 'CarConfigurator')
+        self.assertEqual(title, 'WebCarConfigurator')
 
 
 if __name__ == '__main__':
