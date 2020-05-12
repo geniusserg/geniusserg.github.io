@@ -2,6 +2,9 @@ import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import time
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):
@@ -18,8 +21,10 @@ class TestTemplate(unittest.TestCase):
         self.driver.quit()
 
     def test_case_1(self):
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.title_contains("CarConfigurator"))
         title = self.driver.title
-        self.assertEqual(title, 'CarConfiguration')
+        print('Title is: ' + title)
 
 
 if __name__ == '__main__':
