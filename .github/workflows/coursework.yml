@@ -34,8 +34,8 @@ jobs:
         python3 -m pip install selenium
     - name: Run Tests
       run: |
-      cd tests 
-      python3 -m unittest test
+        cd tests 
+        python3 -m unittest test
         
   deploy:
     runs-on: ubuntu-latest
