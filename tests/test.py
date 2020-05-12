@@ -1,6 +1,10 @@
 import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+import time
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class TestTemplate(unittest.TestCase):
     def setUp(self):
@@ -10,14 +14,17 @@ class TestTemplate(unittest.TestCase):
         chrome_options.add_argument('--disable-gpu')
         self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver.implicitly_wait(10)
+        self.driver.get('https://localhost:8080')
+        time.sleep(10)
 
     def tearDown(self):
         self.driver.quit()
 
     def test_case_1(self):
-        self.driver.get('https://localhost:8080')
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.title_contains("CarConfigurator"))
         title = self.driver.title
-        self.assertEqual(title, 'CarConfigurator')
+        print('Title is: ' + title)
 
 
 if __name__ == '__main__':
