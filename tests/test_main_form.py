@@ -1,4 +1,4 @@
-import tests.test_entry as template
+import test_entry as template
 import unittest
 
 
