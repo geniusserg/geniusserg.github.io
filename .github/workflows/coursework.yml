@@ -16,7 +16,7 @@ jobs:
     - name: Ping web page
       run: curl -l http://localhost:8080/index.html
     - name: Download Chrome Web Driver
-      run: apt install chromium-chromedriver
+      run: sudo apt install chromium-chromedriver
     - name: Install Selenium
       run: pip install selenium
     - name: Run tests
