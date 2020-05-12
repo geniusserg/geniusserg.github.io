@@ -15,7 +15,7 @@ class TestTemplate(unittest.TestCase):
         self.driver.quit()
 
     def test_case_1(self):
-        self.driver.get('https://localhost:8080')
+        self.driver.get('http://localhost:8080')
         title = self.driver.title
         self.assertEqual(title, 'CarConfigurator')
 
