@@ -16,7 +16,17 @@ jobs:
     - name: Ping web page
       run: curl -l http://localhost:8080/index.html
     - name: Download Chrome Web Driver
-      run: docker run -w /work -p 4444:4444 -v /dev/shm:/dev/shm -v $GITHUB_WORKSPACE/tests:/work joyzoursky/python-chromedriver:3.7-alpine3.8-selenium python3 -m unittest test
+      run: |
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+        sudo apt-get update
+        sudo apt-get install google-chrome-stable
+    - name: Download Chrome WEB DRIVER
+      run: |
+        wget -O https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip 
+        unzip chromedriver_linux64.zip -d /opt/chrome_driver
+        ls /opt/chrome_driver
+        chmod +x /opt/chrome_driver/chromedriver
   deploy:
     runs-on: ubuntu-latest
     needs: [test_main]
