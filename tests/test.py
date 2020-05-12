@@ -18,8 +18,6 @@ class TestTemplate(unittest.TestCase):
         self.driver.quit()
 
     def test_case_1(self):
-        a = self.driver.find_element_by_class_name('weqrwe')
-        print(a.text)
         title = self.driver.title
         self.assertEqual(title, 'CarConfiguration')
 
