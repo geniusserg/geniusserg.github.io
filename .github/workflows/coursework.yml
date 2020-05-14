@@ -12,7 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Launch local server with page
-      run: docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
+      run: |
+        cp -r include ./html
+        cp -r index.html ./html
+        docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page on adress localhost:8080
       run: curl -I http://localhost:8080/index.html
     - name: Download Chrome Browser
