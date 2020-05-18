@@ -13,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check geniusserg.github.io
-      run: ping -n 1 geniusserg.github.io
+      run: ping -c 1 http://geniusserg.github.io
 
