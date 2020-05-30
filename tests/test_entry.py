@@ -38,11 +38,22 @@ class TestTemplate(unittest.TestCase):
         for i in dialogs:
             if i.get_attribute("aria-labelledby") == "ui-dialog-title-IlligalInput":
                 self.dialogs['errorInput'] = i
+# TODO enable more dialogs
 
-    def errorDialogInput(self):
+    def initTestingData(self):
+        self.test_data_discount = {'High':{'T':["5"],'F':[]}, 'Low':{'T':["5", "10", ],'F':["0", "-1", ".", ""]}}
+
+
+    def errorDialogInput(self, case):
         error_dialog = self.dialogs['errorInput']
-        self.assertTrue(error_dialog.is_displayed())
+        if case:
+            self.assertTrue(error_dialog.is_displayed())
+        else:
+            self.assertTrue(error_dialog.is_displayed())
         error_dialog.find_element_by_tag_name("button").click()
-        self.assertFalse(error_dialog.is_displayed())
+        if not case:
+            self.assertTrue(error_dialog.is_displayed())
+        else:
+            self.assertTrue(error_dialog.is_displayed())
 
 
