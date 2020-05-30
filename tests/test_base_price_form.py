@@ -1,4 +1,4 @@
-import tests.test_entry as template #TODO delete
+import test_entry as template #TODO delete
 import time
 from selenium.webdriver.common.keys import Keys
 
