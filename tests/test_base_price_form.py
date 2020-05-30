@@ -73,3 +73,17 @@ class TestMain(template.TestTemplate):
         for i in range(0,20):
             button_up.click()
         self.assertTrue(discount.get_property("value"), 99)
+
+#menues correctly change when switch panel
+    def test_case_7(self):
+        self.description = "correct switch with panels"
+        panels = [self.driver.find_element_by_id("TabbedPaneSpecialModel"),
+                  self.driver.find_element_by_id("TabbedPaneAccessory")]
+        menu = [self.driver.find_element_by_id("SpecialsArea"),
+                self.driver.find_element_by_id("AccessoryTable")]
+        for index in range(0,len(panels)):
+            panels[index].click()
+            self.assertTrue(menu[index].is_displayed())
+
+#
+
