@@ -67,7 +67,7 @@ class TestMain(template.TestTemplate):
     def test_case_6(self):
         self.description = "+5% correctly works"
         discount = self.driver.find_element_by_id("DiscountValue_input")
-        button_up = self.driver.find_elements_by_xpath("xpath=//div[@onclick='javascript: GrantDiscount();']")
+        button_up = self.driver.find_element_by_xpath("//div[@onclick='javascript: GrantDiscount();']")
         button_up.click()
         self.assertTrue(discount.get_property("value"), 5)
         for i in range(0,20):
