@@ -29,6 +29,7 @@ class TestTemplate(unittest.TestCase):
         self.driver.get(resource)
         self.driver.implicitly_wait(3)
         self.initDialogs()
+        self.initTestingData()
 
 
 

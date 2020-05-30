@@ -1,4 +1,4 @@
-import test_entry as template #TODO delete
+import tests.test_entry as template #TODO delete
 import time
 from selenium.webdriver.common.keys import Keys
 
@@ -67,12 +67,9 @@ class TestMain(template.TestTemplate):
     def test_case_6(self):
         self.description = "+5% correctly works"
         discount = self.driver.find_element_by_id("DiscountValue_input")
-        button_up = self.driver.find_element_by_id("CalculatorPanel").\
-            find_element_by_tag_name("tbody"). \
-            find_elements_by_tag_name("td")[3].\
-            find_element_by_tag_name("button")
+        button_up = self.driver.find_elements_by_xpath("xpath=//div[@onclick='javascript: GrantDiscount();']")
         button_up.click()
         self.assertTrue(discount.get_property("value"), 5)
-        for i in range(0,5):
+        for i in range(0,20):
             button_up.click()
         self.assertTrue(discount.get_property("value"), 99)
