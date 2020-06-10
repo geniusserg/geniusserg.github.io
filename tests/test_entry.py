@@ -1,7 +1,9 @@
-import unittest
-from selenium import webdriver
-from selenium.webdriver.common import keys
 import time
+import unittest
+
+import outcome
+from selenium import webdriver
+import json
 import os
 
 class TestTemplate(unittest.TestCase):
@@ -9,6 +11,7 @@ class TestTemplate(unittest.TestCase):
 
     def __init__(self, *args, **kwargs):
         super(TestTemplate, self).__init__(*args, **kwargs)
+        self._outcome = outcome
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--headless')
@@ -25,12 +28,11 @@ class TestTemplate(unittest.TestCase):
         if os.name == 'posix':
             resource = 'http://localhost:8080/' #for CI
         else:
-            resource = 'http://geniusserg.github.io/' #for developing
+            resource = 'http://geniusserg.github.io/' #for CD
         self.driver.get(resource)
         self.driver.implicitly_wait(3)
         self.initDialogs()
         self.initTestingData()
-
 
 
     def initDialogs(self):
@@ -39,22 +41,38 @@ class TestTemplate(unittest.TestCase):
         for i in dialogs:
             if i.get_attribute("aria-labelledby") == "ui-dialog-title-IlligalInput":
                 self.dialogs['errorInput'] = i
-# TODO enable more dialogs
 
     def initTestingData(self):
-        self.test_data_discount = {'High':{'T':["5"],'F':[]}, 'Low':{'T':["5", "10", ],'F':["0", "-1", ".", ""]}}
-
+        json_data = open('data.json')
+        self.testing_data = json.load(json_data)
 
     def errorDialogInput(self, case):
         error_dialog = self.dialogs['errorInput']
         if case:
             self.assertTrue(error_dialog.is_displayed())
         else:
-            self.assertTrue(error_dialog.is_displayed())
+            self.assertFalse(error_dialog.is_displayed())
         error_dialog.find_element_by_tag_name("button").click()
         if not case:
             self.assertTrue(error_dialog.is_displayed())
         else:
-            self.assertTrue(error_dialog.is_displayed())
+            self.assertFalse(error_dialog.is_displayed())
 
 
+    def tearDown(self):
+        log = open("test.log" ,"w")
+        log.write("UNIT TESTING CAR CONFIG\n")
+        log.write(str(time.ctime(time.time()))+"\n")
+        log.write(str(self.countTestCases())+" cases \n")
+        log.write("TEST DATA: "+str(self.id())+"\n")
+        log.write("TEST SITE: "+self.driver.current_url+"\n")
+        log.write("TEST DRIVER: " + self.driver.name + "\n")
+        log.write("TEST DATA SET: data.json\n")
+        log.write("::::::::::RESULT::::::::\n")
+        for item in self._outcome.errors:
+            id = str(item[0])
+            fex = str(item[0].failureException)
+            args = "different results:"+ " and ".join([str(item[0].longMessage), str(item[0].currentResult)])
+            lg = id + "\n" + fex + "\n"+ args +"\n------------------------\n"
+            log.write(lg)
+        log.close()
