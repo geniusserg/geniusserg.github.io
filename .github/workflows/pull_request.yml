@@ -23,6 +23,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install selenium
+        python3 -m pip install outcome
     - name: Run Tests
       run: |
         cd tests 
