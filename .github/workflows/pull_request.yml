@@ -12,7 +12,9 @@ jobs:
     - name: Launch local server with page
       run: |
         cp -r include ./html
-        cp -r index.html ./html
+        cp *.html ./html
+        cp *.htm ./html
+        cp *.pdf ./html
         docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page on adress localhost:8080
       run: curl -I http://localhost:8080/index.html
@@ -33,4 +35,8 @@ jobs:
         cd tests 
         ls -al
         python3 -m unittest test_cases.TestMain
+    - uses: actions/upload-artifact@v2
+      with:
+        name: testing result
+        path: tests/test.log
 
