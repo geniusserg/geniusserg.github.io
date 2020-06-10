@@ -16,6 +16,9 @@ jobs:
         docker run -v $GITHUB_WORKSPACE/html:/usr/share/nginx/html:ro  -p 8080:80 -d nginx
     - name: Ping web page on adress localhost:8080
       run: curl -I http://localhost:8080/index.html
+    - name: SET Chrome Driver for selenium
+      run: |
+        export PATH=$PATH:/opt/chrome_driver/chromedriver;
     - name: Install selenium for python
       run: |
         python3 -m pip install --upgrade pip
@@ -24,4 +27,8 @@ jobs:
       run: |
         cd tests 
         python3 -m unittest
+    - uses: actions/upload-artifact@v2
+      with:
+        name: testing log
+        path: tests/log.txt
       
