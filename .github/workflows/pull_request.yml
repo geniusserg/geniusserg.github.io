@@ -31,5 +31,6 @@ jobs:
     - name: Run Tests
       run: |
         cd tests 
-        python3 -m unittest
+        ls -al
+        python3 -m unittest test_cases.TestMain
       
