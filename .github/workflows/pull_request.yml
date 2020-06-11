@@ -36,7 +36,7 @@ jobs:
       run: |
         cd tests
         touch test.log
-        python3 -m unittest test_cases.TestMain > err.log
+        python3 -m unittest test_cases.TestMain 2&>1 1>err.log
         cat err.log >> test.log
       continue-on-error: True
     - uses: actions/upload-artifact@v2
