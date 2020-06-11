@@ -797,7 +797,7 @@
             var name = document.getElementById("VehicleDialogEditPanelVehicleName_input").value;
             var id = document.getElementById("VehicleDialogEditPanelVehicleID_input").value;
             var price = document.getElementById("VehicleDialogEditPanelVehiclePrice_input").value;
-            if(name.length < 1 || (id.length < 1 && Version) || !isNr(price)) {
+            if(name.length < 1 || (id.length < 1 && Version) || !isNr(price) || price < 1000000) {
                 $(function() {
                     $( '#IlligalInputError' ).dialog( 'open' );
                 });
