@@ -35,7 +35,8 @@ jobs:
     - name: Run Tests
       run: |
         cd tests
-        python3 -m unittest test_cases.TestMain
+        touch test.log
+        python3 -m unittest test_cases.TestMain > test.log
       continue-on-error: True
     - uses: actions/upload-artifact@v2
       with:
