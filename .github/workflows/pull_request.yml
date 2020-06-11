@@ -1,6 +1,8 @@
 name: Course Work CI/CD
 
 on:
+  push:
+    branches: master
   pull_request:
     branches: master
 
@@ -32,8 +34,7 @@ jobs:
         python3 -m pip install outcome
     - name: Run Tests
       run: |
-        cd tests 
-        ls -al
+        cd tests
         python3 -m unittest test_cases.TestMain
     - uses: actions/upload-artifact@v2
       with:
