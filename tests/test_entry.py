@@ -64,7 +64,6 @@ class TestTemplate(unittest.TestCase):
         log = open("test.log" ,"w")
         log.write("UNIT TESTING CAR CONFIG\n")
         log.write(str(time.ctime(time.time()))+"\n")
-        log.write(str(self.countTestCases())+" cases \n")
         log.write("TEST SITE: "+self.driver.current_url+"\n")
         log.write("TEST DRIVER: " + self.driver.name + "\n")
         log.write("TEST DATA SET: data.json\n")
