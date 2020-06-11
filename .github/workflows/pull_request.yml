@@ -34,6 +34,7 @@ jobs:
         python3 -m pip install outcome
     - name: Run Tests
       run: |
+        cd tests
         python3 -m unittest test_cases.TestMain
     - uses: actions/upload-artifact@v2
       with:
