@@ -36,9 +36,9 @@ jobs:
       run: |
         cd tests
         touch test.log
-        python3 -m unittest rt 1>msg.log 2>&1 || set LAST=$? 
+        python3 -m unittest rt 1>msg.log 2>&1 || LAST=$? 
         cat msg.log >> test.log
-        echo $LAST
+        echo $LAST 1>&2
         cat test.log
         if [ "$LAST" = "1" ]; then
           cd iyrtuiu
