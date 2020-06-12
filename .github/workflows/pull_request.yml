@@ -43,4 +43,8 @@ jobs:
       with:
         name: testing result
         path: tests/test.log
+    - uses: actions/upload-artifact@v2
+      with:  
+        name: path2
+        path:   test/err.log
 
