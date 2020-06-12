@@ -44,9 +44,5 @@ jobs:
       with:
         name: testing result
         path: tests/test.log
-    - uses: actions/upload-artifact@v2
-      if: ${{ always() }}
-      with:  
-        name: path2
-        path:   tests/err.log
+
 
