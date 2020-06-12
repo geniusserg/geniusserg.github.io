@@ -33,6 +33,7 @@ class TestTemplate(unittest.TestCase):
         self.driver.implicitly_wait(3)
         self.initDialogs()
         self.initTestingData()
+        self.initLog()
 
 
     def initDialogs(self):
@@ -59,20 +60,12 @@ class TestTemplate(unittest.TestCase):
             self.assertFalse(error_dialog.is_displayed())
 
 
-    def tearDown(self):
+    def initLog(self):
         log = open("test.log" ,"w")
         log.write("UNIT TESTING CAR CONFIG\n")
         log.write(str(time.ctime(time.time()))+"\n")
-        log.write(str(self.countTestCases())+" cases \n")
-        log.write("TEST DATA: "+str(self.id())+"\n")
         log.write("TEST SITE: "+self.driver.current_url+"\n")
         log.write("TEST DRIVER: " + self.driver.name + "\n")
         log.write("TEST DATA SET: data.json\n")
         log.write("::::::::::RESULT::::::::\n")
-        for item in self._outcome.errors:
-            id = str(item[0])
-            fex = str(item[0].failureException)
-            args = "different results:"+ " and ".join([str(item[0].longMessage), str(item[0].currentResult)])
-            lg = id + "\n" + fex + "\n"+ args +"\n------------------------\n"
-            log.write(lg)
         log.close()
