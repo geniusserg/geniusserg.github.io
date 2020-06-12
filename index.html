@@ -2895,7 +2895,7 @@
     <script type="text/javascript">
         function DiscountValueChange() {
             thecar_discount = Math.round(document.getElementById('DiscountValue_input').value);
-            if(!isNr(thecar_discount) || thecar_discount < 80 || thecar_discount < 0) {
+            if(!isNr(thecar_discount) || thecar_discount > 80 || thecar_discount < 0) {
                 $(function() {
                     $( '#IlligalInput' ).dialog( 'open' );
                 });
