@@ -37,15 +37,11 @@ jobs:
         cd tests
         touch test.log
         touch err.log
-        python3 -m unittest &>err.log || cat err.log >> test.log
+        python3 -m unittest 1>msg.log  || cat err.log >> test.log
     - uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
         name: testing result
         path: tests/test.log
-    - uses: actions/upload-artifact@v2
-      if: ${{ always() }}
-      with:  
-        name: path2
-        path:   tests/err.log
+
 
