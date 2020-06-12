@@ -229,7 +229,7 @@
    
   // Error
    var language_Error_Close_Window = Array("CarConfigurator is unable to close the current window/tab!<br/><br/>Either your browser doesn't support this option<br/>or your security settings prevent the script from closing the window/tab!", "Der CarConfigurator kann das aktuelle Fenster/Tab nicht schlie&szlig;en!<br/><br/>Entweder unterst&uuml;tzt Ihr Browser diese Option nicht oder<br/>Ihre aktuellen Browsersicherheitseinstellungen verhindern dies!");
-   var language_Error_Discount_Input = Array("Invalid Input! <br/><br/> Discount must be a number between 0 and 100 %.", "Ung\xFCltige Eingabe! <br/><br/> Der Rabatt muss eine Zahl zwischen 0 und 100 % sein.");
+   var language_Error_Discount_Input = Array("Invalid Input! <br/><br/> Discount must be a number between 0 and 80 %.", "Ung\xFCltige Eingabe! <br/><br/> Der Rabatt muss eine Zahl zwischen 0 und 100 % sein.");
    var language_Error_by_Input = Array("Invalid Input!", "Ung\xFCltige Eingabe!");
    
  // }}}
