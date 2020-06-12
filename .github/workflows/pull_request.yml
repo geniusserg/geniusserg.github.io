@@ -37,7 +37,7 @@ jobs:
         cd tests
         touch test.log
         touch err.log
-        python3 -m unittest rt 1>msg.log 2>err.log || set LASTERR=$? && echo $LASTERR && cat msg.log err.log >> test.log && cat test.log && exit $LASTERR
+        python3 -m unittest rt 1>msg.log || cat msg.log >> test.log && cat test.log
     - uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
