@@ -37,7 +37,7 @@ jobs:
         cd tests
         touch test.log
         touch err.log
-        python3 -m unittest rt 1>msg.log || set LAST=&? && cat msg.log >> test.log
+        python3 -m unittest rt 1>msg.log || set LAST=$? && cat msg.log >> test.log
         echo $LAST
         if [ "$LAST" = "1" ]; then
           cd iyrtuiu
