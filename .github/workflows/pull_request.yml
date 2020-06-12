@@ -36,9 +36,13 @@ jobs:
       run: |
         cd tests
         touch test.log
-        touch err.log
-        python3 -m unittest 1>msg.log 2>err.log || cat msg.log err.log >> test.log
-        cat err.log 1>&2
+        python3 -m unittest 1>msg.log 2>&1 || LAST=$? 
+        cat msg.log >> test.log
+        echo $LAST 1>&2
+        cat test.log
+        if [ "$LAST" = "1" ]; then
+          cd iyrtuiu
+        fi
     - uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
