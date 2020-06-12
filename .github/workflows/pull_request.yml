@@ -13,6 +13,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Launch local server with page
       run: |
+        mkdir html
         cp -r include ./html
         cp *.html ./html
         cp *.htm ./html
@@ -38,10 +39,9 @@ jobs:
         touch test.log
         python3 -m unittest 1>msg.log 2>&1 || LAST=$? 
         cat msg.log >> test.log
-        echo $LAST 1>&2
         cat test.log
         if [ "$LAST" = "1" ]; then
-          cd iyrtuiu
+          cd ERROR_TESTS
         fi
     - uses: actions/upload-artifact@v2
       if: ${{ always() }}
