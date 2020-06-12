@@ -37,8 +37,7 @@ jobs:
         cd tests
         touch test.log
         touch err.log
-        python3 -m unittest  &>err.log
-        cat err.log >> test.log
+        python3 -m unittest &>err.log || cat err.log >> test.log
     - uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
