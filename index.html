@@ -13,6 +13,11 @@
   .btn { margin-left:auto; background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
          font-weight:600; font-size:14px; white-space:nowrap; flex:0 0 auto; }
   .btn:hover { text-decoration:none; filter:brightness(1.08); }
+  .tg { display:inline-flex; align-items:center; gap:6px; background:#229ED9; color:#fff;
+        padding:4px 12px; border-radius:999px; font-weight:600; vertical-align:middle;
+        transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+  .tg:hover { background:#1c8fc7; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(34,158,217,.45); text-decoration:none; }
+  .tg:active { transform: translateY(0) scale(.96); box-shadow: 0 1px 4px rgba(34,158,217,.3); }
   .page { max-width:820px; margin:24px auto; background:#fff; border:1px solid var(--line);
           border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:40px 44px; }
   header { display:flex; align-items:center; gap:22px; border-bottom:2px solid var(--ink); padding-bottom:18px; }
@@ -38,6 +43,9 @@
   .stack-label { font-weight:600; }
   footer { margin-top:26px; text-align:center; color:var(--muted); font-size:12px; }
   @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
+  .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
+  @media (prefers-reduced-motion: reduce){ .page,.tg,.btn{ animation:none; transition:none; } }
   @media print{ body{background:#fff} .page{border:0;box-shadow:none;margin:0;max-width:none;border-radius:0} .btn{display:none} }
 </style></head><body><div class="page">
 <header>
@@ -45,7 +53,7 @@
 <div class="head">
 <h1>Danilov Sergey Dmitrievich</h1>
 <div class="contact">
-Saint Petersburg, Russia &nbsp;·&nbsp; <a href="tel:+79867678696">+7 (986) 767-86-96</a> &nbsp;·&nbsp; <a href="https://t.me/geniusserg">@geniusserg</a> &nbsp;·&nbsp; <a href="mailto:danilovsergeyd@vk.com">danilovsergeyd@vk.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/geniusserg/">linkedin.com/in/geniusserg</a>
+Saint Petersburg, Russia &nbsp;·&nbsp; <a href="tel:+79867678696">+7 (986) 767-86-96</a> &nbsp;·&nbsp; <a class="tg" href="https://t.me/geniusserg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>@geniusserg</a> &nbsp;·&nbsp; <a href="mailto:danilovsergeyd@vk.com">danilovsergeyd@vk.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/geniusserg/">linkedin.com/in/geniusserg</a>
 </div></div>
 <a class="btn" href="resume.pdf" download="Danilov_Sergey_Resume.pdf">⬇ Download PDF</a>
 </header>
