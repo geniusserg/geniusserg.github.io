@@ -64,7 +64,13 @@
   @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
   .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
   @media (prefers-reduced-motion: reduce){ .page,.cb,.cb svg,.btn{ animation:none; transition:none; } }
-  @media print{ body{background:#fff} .page{border:0;box-shadow:none;margin:0;max-width:none;border-radius:0} .btn,.langbar{display:none} }
+  @page { size:A4; margin:12mm 14mm; }
+  @media print{
+    body{ background:#fff; }
+    .page{ border:0; box-shadow:none; margin:0; max-width:none; border-radius:0; padding:0; animation:none; }
+    .btn,.langbar{ display:none; }
+    .cb{ box-shadow:none; }
+  }
 </style>
 </head><body>
 <div class="page" id="page-en" lang="en"><header>
@@ -142,7 +148,7 @@
 </div></div>
 <div class="head-right">
 <div class="langbar"><button class="langbtn" data-lang="en" onclick="setLang('en')">EN</button><button class="langbtn" data-lang="ru" onclick="setLang('ru')">RU</button></div>
-<a class="btn" href="resume.pdf" download="Danilov_Sergey_Resume.pdf">⬇ Скачать PDF</a>
+<a class="btn" href="resume-ru.pdf" download="Danilov_Sergey_Resume_RU.pdf">⬇ Скачать PDF</a>
 </div>
 </header>
 <div class="summary">Инженер по LLM-инференсу, который полностью владеет стеком обслуживания больших языковых моделей — распределённый инференс, оркестрация ускорителей, программный стек vLLM и VeRL, MoE-маршрутизация и предиктивная надёжность аппаратной части кластера (память, сеть) — и доводит его до продакшена.</div>
@@ -207,7 +213,8 @@ function setLang(l) {
 }
 var saved = null;
 try { saved = localStorage.getItem('lang'); } catch(e) {}
-var initial = saved || ((navigator.language || '').slice(0,2) === 'ru' ? 'ru' : 'en');
+var qs = (location.search || '').match(/lang=(en|ru)/);
+var initial = (qs && qs[1]) || saved || ((navigator.language || '').slice(0,2) === 'ru' ? 'ru' : 'en');
 setLang(initial);
 </script>
 </body></html>
