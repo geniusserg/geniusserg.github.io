@@ -1,0 +1,45 @@
+DANILOV SERGEY DMITRIEVICH
+Saint Petersburg, Russia  |  +7 (986) 767-86-96  |  @geniusserg  |  danilovsergeyd@vk.com  |  linkedin.com/in/geniusserg
+
+SUMMARY
+AI inference engineer who owns the full LLM serving stack — distributed inference, accelerator orchestration, vLLM and VeRL software stack, MoE routing, and predictive reliability of cluster hardware internals (memory, network) — and runs it in production.
+
+CAREER
+Huawei — LLM Inference R&D Engineer  |  September 2024 – present
+- Disaggregated Prefill/Decode simulator — C++ discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.
+- Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model that raised cluster availability by +10%.
+- NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.
+- Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency.
+- Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.
+ML Engineer — ITMO University  |  November 2023 – September 2024
+- Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.
+- Almazov & ITMO: Shapley-valued weighted XGBoost for obesity treatment; 71% accuracy for 3-month sibutramine therapy response; 2 Q2 papers.
+- Industrial AI assistant: improved PDF NER with prompt engineering/self-consistency; filtering removed 80% repetition.
+Testing Engineer — Harman  |  September 2021 – July 2022
+- Sped up testing for complex GPS automotive systems with Robot Framework
+Release Engineer — Intel  |  July 2019 – August 2021
+- Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and C++ installer.
+
+TECH STACK
+- AI infrastructure: Harness, Agents workflow, RAG, CAG, vLLM, VeRL, PyTorch, Kubernetes
+- Data Analysis & Research: Python, Pandas, Scikit-learn, AutoML, PatentScope, Elsevier Scopus
+
+EDUCATION
+ITMO University, 2024 — Master's degree in Data Analysis
+  - Thesis: Shapley-value weighted filtering for small-sample ML; +7% accuracy on medical data.
+Higher School of Economics, 2022 — Bachelor's degree in Software Engineering
+  - Thesis: accessible assistant for visually impaired users using Yandex Cloud OCR.
+
+PUBLICATIONS
+- Google Scholar · h-index 2
+- Danilov et al., J. Pers. Med. 2024, 14, 811 — sibutramine therapy prediction.
+- Markina et al., J. Clin. Med. 2024, 13, 4151 — brown adipose tissue and obesity treatment.
+
+COMPETITIONS
+ScienceRAG — Research assistant agent based on GigaChat
+  - ScienceRAG: improved ArXiv RAG retrieval on GigaChat
+X5 AI Tech Hackathon — Hallucination detection algorithm
+  - X5 AI Tech: ruBERT hallucination detector — 88% accuracy, <0.45 s inference; top-10.
+
+LANGUAGES
+- Russian, English (B1)
