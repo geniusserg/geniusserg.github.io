@@ -200,9 +200,9 @@ def build_page(lang):
     pdf_file = 'resume-ru.pdf' if lang == 'ru' else 'resume.pdf'
     pdf_name = 'Danilov_Sergey_Resume_RU.pdf' if lang == 'ru' else 'Danilov_Sergey_Resume.pdf'
     parts.append('<div class="head-right">')
-    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
     parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
     parts.append('</div>')
+    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
     parts.append('</header>')
     parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
     for heading, items in T['sections']:
@@ -274,13 +274,13 @@ CSS = '''
   .langbtn.active { background:var(--accent); color:#fff; }
   .page { position:relative; max-width:820px; margin:24px auto; background:#fff; border:1px solid var(--line);
           border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.06); padding:40px 44px; }
-  header { display:flex; align-items:center; gap:22px; border-bottom:2px solid var(--ink); padding-bottom:18px; }
+  header { position:relative; display:flex; align-items:center; gap:22px; border-bottom:2px solid var(--ink); padding-bottom:18px; }
   .avatar { width:92px; height:92px; border-radius:50%; object-fit:cover; flex:0 0 auto; border:2px solid var(--line); }
   .head h1 { margin:0; font-size:30px; letter-spacing:.2px; }
   .head .contact { margin-top:10px; color:var(--muted); font-size:13.5px;
                    display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
   .head .contact .contact-text a { color:var(--accent); }
-  .views { color:var(--muted); font-size:12.5px; white-space:nowrap; }
+  .views { position:absolute; bottom:4px; right:0; color:var(--muted); font-size:12.5px; white-space:nowrap; }
   .head-right { margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex:0 0 auto; }
   .btn { background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
          font-weight:600; font-size:14px; white-space:nowrap; }
