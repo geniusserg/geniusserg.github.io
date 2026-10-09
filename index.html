@@ -148,7 +148,7 @@
 <div class="head-right">
 <a class="btn" href="resume.pdf" download="Danilov_Sergey_Resume.pdf">⬇ Download PDF</a>
 </div>
-<div class="views">👁 <span class="view-count">0</span> views</div>
+<div class="views" data-one="view" data-few="views" data-many="views">👁 <span class="view-count">0</span> <span class="view-label">views</span></div>
 </header>
 <div class="summary">ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into reliable, high-availability services with measurable SLO.</div>
 <h2>Career</h2>
@@ -216,7 +216,7 @@
 <div class="head-right">
 <a class="btn" href="resume-ru.pdf" download="Danilov_Sergey_Resume_RU.pdf">⬇ Скачать PDF</a>
 </div>
-<div class="views">👁 <span class="view-count">0</span> просмотров</div>
+<div class="views" data-one="просмотр" data-few="просмотра" data-many="просмотров">👁 <span class="view-count">0</span> <span class="view-label">просмотров</span></div>
 </header>
 <div class="summary">ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — и превращает модели в надёжные высокодоступные сервисы с измеримым SLO.</div>
 <h2>Опыт работы</h2>
@@ -314,8 +314,27 @@ function setCount(n) {
   document.querySelectorAll('.like-count').forEach(function(el){ el.textContent = n; });
 }
 
+function pluralize(n, lang, one, few, many) {
+  if (lang === 'ru') {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+  return n === 1 ? one : many;
+}
+
 function setViewCount(n) {
-  document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
+  document.querySelectorAll('.views').forEach(function(el){
+    var c = el.querySelector('.view-count');
+    if (c) c.textContent = n;
+    var lbl = el.querySelector('.view-label');
+    if (lbl) {
+      var page = el.closest('.page');
+      var lang = page ? page.getAttribute('lang') : 'en';
+      lbl.textContent = pluralize(n, lang, el.dataset.one, el.dataset.few, el.dataset.many);
+    }
+  });
 }
 
 function getToggles() {

@@ -39,7 +39,7 @@ I18N = {
         'download': '⬇ Download PDF',
         'like': 'Like',
         'liked': 'Liked',
-        'views': 'views',
+        'views': ['view', 'views', 'views'],
         'doc': '📄 doc',
         'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
                     "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
@@ -104,7 +104,7 @@ I18N = {
         'download': '⬇ Скачать PDF',
         'like': 'Нравится',
         'liked': 'Спасибо',
-        'views': 'просмотров',
+        'views': ['просмотр', 'просмотра', 'просмотров'],
         'doc': '📄 документация',
         'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
                     "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
@@ -202,7 +202,10 @@ def build_page(lang):
     parts.append('<div class="head-right">')
     parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
     parts.append('</div>')
-    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
+    v = T["views"]
+    parts.append(f'<div class="views" data-one="{esc(v[0])}" data-few="{esc(v[1])}" data-many="{esc(v[2])}">'
+                 f'👁 <span class="view-count">0</span> <span class="view-label">{esc(v[2])}</span>'
+                 '</div>')
     parts.append('</header>')
     parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
     for heading, items in T['sections']:
@@ -399,8 +402,27 @@ function setCount(n) {
   document.querySelectorAll('.like-count').forEach(function(el){ el.textContent = n; });
 }
 
+function pluralize(n, lang, one, few, many) {
+  if (lang === 'ru') {
+    var m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return one;
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+    return many;
+  }
+  return n === 1 ? one : many;
+}
+
 function setViewCount(n) {
-  document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
+  document.querySelectorAll('.views').forEach(function(el){
+    var c = el.querySelector('.view-count');
+    if (c) c.textContent = n;
+    var lbl = el.querySelector('.view-label');
+    if (lbl) {
+      var page = el.closest('.page');
+      var lang = page ? page.getAttribute('lang') : 'en';
+      lbl.textContent = pluralize(n, lang, el.dataset.one, el.dataset.few, el.dataset.many);
+    }
+  });
 }
 
 function getToggles() {
