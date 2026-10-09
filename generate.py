@@ -204,7 +204,10 @@ def build_page(lang):
     parts.append('</div>')
     v = T["views"]
     parts.append(f'<div class="views" data-one="{esc(v[0])}" data-few="{esc(v[1])}" data-many="{esc(v[2])}">'
-                 f'👁 <span class="view-count">0</span> <span class="view-label">{esc(v[2])}</span>'
+                 '<svg class="views-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">'
+                 '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/>'
+                 '</svg>'
+                 f'<span class="view-count">0</span> <span class="view-label">{esc(v[2])}</span>'
                  '</div>')
     parts.append('</header>')
     parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
@@ -287,7 +290,9 @@ CSS = '''
   .head .contact { margin-top:10px; color:var(--muted); font-size:13.5px;
                    display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
   .head .contact .contact-text a { color:var(--accent); }
-  .views { position:absolute; bottom:4px; right:0; color:var(--muted); font-size:12.5px; white-space:nowrap; }
+  .views { position:absolute; bottom:4px; right:0; color:var(--muted); font-size:12.5px; white-space:nowrap;
+           display:inline-flex; align-items:center; gap:5px; }
+  .views-icon { width:14px; height:14px; flex:0 0 auto; }
   .head-right { margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex:0 0 auto; }
   .btn { background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
          font-weight:600; font-size:14px; white-space:nowrap; }
