@@ -241,6 +241,7 @@ def build_page(lang):
     parts.append(f'<button class="like-btn" onclick="toggleLike()" aria-label="{esc(T["like"])}">'
                  '<svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
                  f'<span class="like-label" data-like="{esc(T["like"])}" data-liked="{esc(T["liked"])}">{esc(T["like"])}</span>'
+                 '<span class="like-count">0</span>'
                  '</button>')
     parts.append(f'<div class="foot-note">{esc(T["footer"])}</div>')
     parts.append('</footer>')
@@ -312,6 +313,9 @@ CSS = '''
   .like-btn.liked { border-color:#f43f5e; color:#f43f5e; background:#fff1f2; }
   .like-btn.liked .heart { fill:#f43f5e; stroke:#f43f5e; }
   .like-btn.pop .heart { animation: heartPop .4s ease; }
+  .like-count { background:var(--line); color:var(--muted); border-radius:999px; padding:0 8px;
+                font-size:12px; line-height:18px; min-width:18px; text-align:center; }
+  .like-btn.liked .like-count { background:#ffe4e6; color:#f43f5e; }
   @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
   .foot-note { margin-top:10px; }
   @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
@@ -345,25 +349,59 @@ var qs = (location.search || '').match(/lang=(en|ru)/);
 var initial = (qs && qs[1]) || saved || ((navigator.language || '').slice(0,2) === 'ru' ? 'ru' : 'en');
 setLang(initial);
 
-function applyLike(liked, pop) {
+var UPSTASH_URL = 'https://romantic-pug-216854.upstash.io';
+var UPSTASH_TOKEN = 'gQAAAAAAA08WAAIgcDIwYjE5ZTQwOThmM2U0NTdlYWYyMzg2NzM5MzVlMDFiMw';
+var LIKE_KEY = 'like_count';
+
+function upstash(cmd) {
+  return fetch(UPSTASH_URL, {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + UPSTASH_TOKEN, 'Content-Type': 'application/json' },
+    body: JSON.stringify(cmd)
+  }).then(function(r){ return r.json(); });
+}
+
+function applyLike(liked) {
   document.querySelectorAll('.like-btn').forEach(function(b){
     b.classList.toggle('liked', liked);
-    if (liked && pop) { b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
     var lbl = b.querySelector('.like-label');
     if (lbl) lbl.textContent = liked ? (lbl.dataset.liked || 'Liked') : (lbl.dataset.like || 'Like');
   });
 }
+
+function setCount(n) {
+  document.querySelectorAll('.like-count').forEach(function(el){ el.textContent = n; });
+}
+
 function toggleLike() {
   var liked = null;
   try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
-  liked = !liked;
-  try { localStorage.setItem('resume-liked', liked ? '1' : '0'); } catch(e) {}
-  applyLike(liked, true);
+  if (liked) return;
+
+  document.querySelectorAll('.like-btn').forEach(function(b){ b.disabled = true; });
+
+  upstash(['INCR', LIKE_KEY]).then(function(d){
+    var n = parseInt(d && d.result, 10);
+    if (!isNaN(n)) setCount(n);
+    try { localStorage.setItem('resume-liked', '1'); } catch(e) {}
+    applyLike(true);
+    document.querySelectorAll('.like-btn').forEach(function(b){
+      b.disabled = false;
+      b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
+    });
+  }).catch(function(){
+    document.querySelectorAll('.like-btn').forEach(function(b){ b.disabled = false; });
+  });
 }
+
 (function(){
   var liked = null;
   try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
-  applyLike(liked, false);
+  applyLike(liked);
+  upstash(['GET', LIKE_KEY]).then(function(d){
+    var n = parseInt(d && d.result, 10);
+    if (!isNaN(n)) setCount(n);
+  }).catch(function(){});
 })();
 </script>'''
 
