@@ -196,12 +196,13 @@ def build_page(lang):
             texts.append(seg)
     parts.append('<span class="contact-text">' + ' · '.join(texts) + '</span>')
     parts.extend(buttons)
-    parts.append('</div>')
-    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
-    parts.append('</div>')
+    parts.append('</div></div>')
     pdf_file = 'resume-ru.pdf' if lang == 'ru' else 'resume.pdf'
     pdf_name = 'Danilov_Sergey_Resume_RU.pdf' if lang == 'ru' else 'Danilov_Sergey_Resume.pdf'
+    parts.append('<div class="head-right">')
     parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
+    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
+    parts.append('</div>')
     parts.append('</header>')
     parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
     for heading, items in T['sections']:
@@ -279,9 +280,10 @@ CSS = '''
   .head .contact { margin-top:10px; color:var(--muted); font-size:13.5px;
                    display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
   .head .contact .contact-text a { color:var(--accent); }
-  .views { margin-top:6px; color:var(--muted); font-size:12.5px; }
-  .btn { margin-left:auto; background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
-         font-weight:600; font-size:14px; white-space:nowrap; flex:0 0 auto; }
+  .views { color:var(--muted); font-size:12.5px; white-space:nowrap; }
+  .head-right { margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex:0 0 auto; }
+  .btn { background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
+         font-weight:600; font-size:14px; white-space:nowrap; }
   .btn:hover { text-decoration:none; filter:brightness(1.08); }
   .cb { display:inline-flex; align-items:center; gap:6px; padding:4px 14px; border-radius:999px;
         color:var(--cb-color); font-weight:400; font-size:13px; vertical-align:middle;
@@ -336,7 +338,7 @@ CSS = '''
   @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
   .foot-note { margin-top:10px; }
   .foot-contact { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; margin-top:14px; }
-  @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
+  @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} .head-right{margin-left:0;align-items:center} h1{font-size:26px} }
   @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
   .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
   @media (prefers-reduced-motion: reduce){ .page,.cb,.cb svg,.btn{ animation:none; transition:none; } }
