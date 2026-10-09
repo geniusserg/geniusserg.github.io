@@ -2,7 +2,7 @@ DANILOV SERGEY DMITRIEVICH
 Saint Petersburg, Russia  |  +7 (986) 767-86-96  |  @geniusserg  |  danilovsergeyd@vk.com  |  linkedin.com/in/geniusserg
 
 SUMMARY
-AI inference engineer who owns the full LLM serving stack — distributed inference, accelerator orchestration, vLLM and VeRL software stack, MoE routing, and predictive reliability of cluster hardware internals (memory, network) — and runs it in production.
+ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into reliable, high-availability services with measurable SLO.
 
 CAREER
 Huawei — LLM Inference R&D Engineer  |  September 2024 – present

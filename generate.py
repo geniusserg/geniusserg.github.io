@@ -37,9 +37,10 @@ I18N = {
         'title': 'Danilov Sergey Dmitrievich — Resume',
         'footer': 'Danilov Sergey Dmitrievich · Resume',
         'download': '⬇ Download PDF',
-        'summary': ("AI inference engineer who owns the full LLM serving stack — distributed inference, "
-                    "accelerator orchestration, vLLM and VeRL software stack, MoE routing, and predictive "
-                    "reliability of cluster hardware internals (memory, network) — and runs it in production."),
+        'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
+                    "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
+                    "MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into "
+                    "reliable, high-availability services with measurable SLO."),
         'sections': [
             ("Career", [
                 ('job', 'huawei', "Huawei — LLM Inference R&D Engineer", "September 2024 – present", [
@@ -97,9 +98,10 @@ I18N = {
         'title': 'Данилов Сергей Дмитриевич — Резюме',
         'footer': 'Данилов Сергей Дмитриевич · Резюме',
         'download': '⬇ Скачать PDF',
-        'summary': ("Инженер по LLM-инференсу, который полностью владеет стеком обслуживания больших языковых моделей — "
-                    "распределённый инференс, оркестрация ускорителей, программный стек vLLM и VeRL, MoE-маршрутизация "
-                    "и прогнозирование отказов кластерного оборудования (память, сеть) — и доводит его до продакшена."),
+        'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
+                    "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
+                    "MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — "
+                    "и превращает модели в надёжные высокодоступные сервисы с измеримым SLO."),
         'sections': [
             ("Опыт работы", [
                 ('job', 'huawei', "Huawei — R&D-инженер по LLM-инференсу", "Сентябрь 2024 – настоящее время", [
