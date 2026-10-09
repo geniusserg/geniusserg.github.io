@@ -204,8 +204,9 @@ def build_page(lang):
     parts.append('</div>')
     v = T["views"]
     parts.append(f'<div class="views" data-one="{esc(v[0])}" data-few="{esc(v[1])}" data-many="{esc(v[2])}">'
-                 '<svg class="views-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">'
-                 '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/>'
+                 '<svg class="views-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                 '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>'
+                 '<circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/>'
                  '</svg>'
                  f'<span class="view-count">0</span> <span class="view-label">{esc(v[2])}</span>'
                  '</div>')
