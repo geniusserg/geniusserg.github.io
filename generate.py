@@ -307,6 +307,7 @@ CSS = '''
   .like-btn { display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid var(--line);
               color:var(--muted); padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:500;
               transition: transform .15s ease, border-color .2s ease, color .2s ease, background .2s ease; }
+  .like-btn:disabled { opacity:.5; cursor:not-allowed; }
   .like-btn .heart { width:16px; height:16px; fill:transparent; stroke:currentColor; stroke-width:2;
                      transition: fill .2s ease; }
   .like-btn:hover { border-color:#f43f5e; color:#f43f5e; }
@@ -352,6 +353,7 @@ setLang(initial);
 var UPSTASH_URL = 'https://romantic-pug-216854.upstash.io';
 var UPSTASH_TOKEN = 'gQAAAAAAA08WAAIgcDIwYjE5ZTQwOThmM2U0NTdlYWYyMzg2NzM5MzVlMDFiMw';
 var LIKE_KEY = 'like_count';
+var MAX_TOGGLES = 10;
 
 function upstash(cmd) {
   return fetch(UPSTASH_URL, {
@@ -373,24 +375,44 @@ function setCount(n) {
   document.querySelectorAll('.like-count').forEach(function(el){ el.textContent = n; });
 }
 
+function getToggles() {
+  var n = 0;
+  try { n = parseInt(localStorage.getItem('resume-toggle-count'), 10); } catch(e) {}
+  return isNaN(n) ? 0 : n;
+}
+
+function updateLimitUI(toggles) {
+  var locked = toggles >= MAX_TOGGLES;
+  document.querySelectorAll('.like-btn').forEach(function(b){
+    b.disabled = locked;
+    b.classList.toggle('locked', locked);
+  });
+}
+
 function toggleLike() {
+  var toggles = getToggles();
+  if (toggles >= MAX_TOGGLES) return;
+
   var liked = null;
   try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
-  if (liked) return;
+  var newLiked = !liked;
+  var cmd = newLiked ? 'INCR' : 'DECR';
 
   document.querySelectorAll('.like-btn').forEach(function(b){ b.disabled = true; });
 
-  upstash(['INCR', LIKE_KEY]).then(function(d){
+  upstash([cmd, LIKE_KEY]).then(function(d){
     var n = parseInt(d && d.result, 10);
-    if (!isNaN(n)) setCount(n);
-    try { localStorage.setItem('resume-liked', '1'); } catch(e) {}
-    applyLike(true);
+    if (!isNaN(n)) setCount(n < 0 ? 0 : n);
+    try { localStorage.setItem('resume-liked', newLiked ? '1' : '0'); } catch(e) {}
+    toggles += 1;
+    try { localStorage.setItem('resume-toggle-count', String(toggles)); } catch(e) {}
+    applyLike(newLiked);
     document.querySelectorAll('.like-btn').forEach(function(b){
-      b.disabled = false;
       b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop');
     });
+    updateLimitUI(toggles);
   }).catch(function(){
-    document.querySelectorAll('.like-btn').forEach(function(b){ b.disabled = false; });
+    updateLimitUI(toggles);
   });
 }
 
@@ -398,9 +420,10 @@ function toggleLike() {
   var liked = null;
   try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
   applyLike(liked);
+  updateLimitUI(getToggles());
   upstash(['GET', LIKE_KEY]).then(function(d){
     var n = parseInt(d && d.result, 10);
-    if (!isNaN(n)) setCount(n);
+    if (!isNaN(n)) setCount(n < 0 ? 0 : n);
   }).catch(function(){});
 })();
 </script>'''
