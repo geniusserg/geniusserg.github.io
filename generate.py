@@ -37,6 +37,8 @@ I18N = {
         'title': 'Danilov Sergey Dmitrievich — Resume',
         'footer': 'Danilov Sergey Dmitrievich · Resume',
         'download': '⬇ Download PDF',
+        'like': 'Like',
+        'liked': 'Liked',
         'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
                     "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
                     "MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into "
@@ -98,6 +100,8 @@ I18N = {
         'title': 'Данилов Сергей Дмитриевич — Резюме',
         'footer': 'Данилов Сергей Дмитриевич · Резюме',
         'download': '⬇ Скачать PDF',
+        'like': 'Нравится',
+        'liked': 'Спасибо',
         'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
                     "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
                     "MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — "
@@ -233,7 +237,13 @@ def build_page(lang):
                     lab, rest = text.split(': ', 1)
                     seg = f'<span class="stack-label">{esc(lab)}:</span> {esc(rest)}'
                 parts.append(f'<ul class="plain"><li>{seg}</li></ul>')
-    parts.append(f'<footer>{esc(T["footer"])}</footer>')
+    parts.append('<footer>')
+    parts.append(f'<button class="like-btn" onclick="toggleLike()" aria-label="{esc(T["like"])}">'
+                 '<svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
+                 f'<span class="like-label" data-like="{esc(T["like"])}" data-liked="{esc(T["liked"])}">{esc(T["like"])}</span>'
+                 '</button>')
+    parts.append(f'<div class="foot-note">{esc(T["footer"])}</div>')
+    parts.append('</footer>')
     return '\n'.join(parts)
 
 CSS = '''
@@ -293,6 +303,17 @@ CSS = '''
   .plain li::before { content:"•  "; color:var(--accent); }
   .stack-label { font-weight:600; }
   footer { margin-top:26px; text-align:center; color:var(--muted); font-size:12px; }
+  .like-btn { display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid var(--line);
+              color:var(--muted); padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:500;
+              transition: transform .15s ease, border-color .2s ease, color .2s ease, background .2s ease; }
+  .like-btn .heart { width:16px; height:16px; fill:transparent; stroke:currentColor; stroke-width:2;
+                     transition: fill .2s ease; }
+  .like-btn:hover { border-color:#f43f5e; color:#f43f5e; }
+  .like-btn.liked { border-color:#f43f5e; color:#f43f5e; background:#fff1f2; }
+  .like-btn.liked .heart { fill:#f43f5e; stroke:#f43f5e; }
+  .like-btn.pop .heart { animation: heartPop .4s ease; }
+  @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
+  .foot-note { margin-top:10px; }
   @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
   @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
   .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
@@ -301,7 +322,7 @@ CSS = '''
   @media print{
     body{ background:#fff; }
     .page{ border:0; box-shadow:none; margin:0; max-width:none; border-radius:0; padding:0; animation:none; }
-    .btn,.langbar{ display:none; }
+    .btn,.langbar,.like-btn{ display:none; }
     .cb{ box-shadow:none; }
   }
 </style>'''
@@ -323,6 +344,27 @@ try { saved = localStorage.getItem('lang'); } catch(e) {}
 var qs = (location.search || '').match(/lang=(en|ru)/);
 var initial = (qs && qs[1]) || saved || ((navigator.language || '').slice(0,2) === 'ru' ? 'ru' : 'en');
 setLang(initial);
+
+function applyLike(liked, pop) {
+  document.querySelectorAll('.like-btn').forEach(function(b){
+    b.classList.toggle('liked', liked);
+    if (liked && pop) { b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
+    var lbl = b.querySelector('.like-label');
+    if (lbl) lbl.textContent = liked ? (lbl.dataset.liked || 'Liked') : (lbl.dataset.like || 'Like');
+  });
+}
+function toggleLike() {
+  var liked = null;
+  try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
+  liked = !liked;
+  try { localStorage.setItem('resume-liked', liked ? '1' : '0'); } catch(e) {}
+  applyLike(liked, true);
+}
+(function(){
+  var liked = null;
+  try { liked = localStorage.getItem('resume-liked') === '1'; } catch(e) { liked = false; }
+  applyLike(liked, false);
+})();
 </script>'''
 
 SEO_HEAD = '''
