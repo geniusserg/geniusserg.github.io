@@ -56,7 +56,7 @@ I18N = {
                 ]),
                 ('job', 'itmo', "ML Engineer — ITMO University", "November 2023 – September 2024", [
                     "Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.",
-                    "Almazov & ITMO: Shapley-valued weighted XGBoost for obesity treatment; 71% accuracy for 3-month sibutramine therapy response; 2 Q2 papers.",
+                    ("Almazov & ITMO: Shapley-valued weighted XGBoost for obesity treatment; 71% accuracy for 3-month sibutramine therapy response; 2 Q2 papers.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
                     "Industrial AI assistant: improved PDF NER with prompt engineering/self-consistency; filtering removed 80% repetition.",
                 ]),
                 ('job', 'harman', "Testing Engineer — Harman", "September 2021 – July 2022", [
@@ -121,7 +121,7 @@ I18N = {
                 ]),
                 ('job', 'itmo', "ML-инженер — Университет ИТМО", "Ноябрь 2023 – Сентябрь 2024", [
                     "Сбер и ИТМО: эмулятор пользователей на CTGAN; улучшил MAP@5 рекомендательной системы BiVAE на 3%.",
-                    "Алмазова и ИТМО: взвешенный XGBoost с весами Шепли для лечения ожирения; точность 71% в прогнозе ответа на терапию сибутрамином за 3 месяца; 2 статьи Q2.",
+                    ("Алмазова и ИТМО: взвешенный XGBoost с весами Шепли для лечения ожирения; точность 71% в прогнозе ответа на терапию сибутрамином за 3 месяца; 2 статьи Q2.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
                     "Промышленный ИИ-ассистент: улучшил NER по PDF с помощью prompt engineering/self-consistency; фильтрация убрала 80% повторов.",
                 ]),
                 ('job', 'harman', "Инженер по тестированию — Harman", "Сентябрь 2021 – Июль 2022", [
@@ -216,8 +216,12 @@ def build_page(lang):
                              f'<span class="dates">· {esc(dates)}</span><ul>')
                 for b in bullets:
                     if isinstance(b, tuple):
-                        btext, bdocs = b
-                        parts.append(f'<li>{esc(btext)} <a class="doc-badge" href="{esc(bdocs)}" target="_blank" rel="noopener">{esc(T["doc"])}</a></li>')
+                        btext, blinks = b
+                        if isinstance(blinks, str):
+                            badges = f'<a class="doc-badge" href="{esc(blinks)}" target="_blank" rel="noopener">{esc(T["doc"])}</a>'
+                        else:
+                            badges = ''.join(f'<a class="doc-badge" href="{esc(url)}" target="_blank" rel="noopener">{esc(lbl)}</a>' for lbl, url in blinks)
+                        parts.append(f'<li>{esc(btext)} {badges}</li>')
                     else:
                         parts.append(f'<li>{esc(b)}</li>')
                 parts.append('</ul></div>')
