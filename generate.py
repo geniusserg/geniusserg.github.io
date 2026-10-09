@@ -40,6 +40,7 @@ I18N = {
         'like': 'Like',
         'liked': 'Liked',
         'views': 'views',
+        'doc': '📄 doc',
         'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
                     "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
                     "MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into "
@@ -49,7 +50,7 @@ I18N = {
                 ('job', 'huawei', "Huawei — LLM Inference R&D Engineer", "September 2024 – present", [
                     "Disaggregated Prefill/Decode simulator — C++ discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.",
                     "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model that raised cluster availability by +10%.",
-                    "NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.",
+                    ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency.",
                     "Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.",
                 ]),
@@ -104,6 +105,7 @@ I18N = {
         'like': 'Нравится',
         'liked': 'Спасибо',
         'views': 'просмотров',
+        'doc': '📄 документация',
         'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
                     "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
                     "MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — "
@@ -113,7 +115,7 @@ I18N = {
                 ('job', 'huawei', "Huawei — R&D-инженер по LLM-инференсу", "Сентябрь 2024 – настоящее время", [
                     "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на C++ системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.",
                     "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров повысила доступность кластера на +10%.",
-                    "NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза.",
+                    ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Комбинаторные алгоритмы размещения экспертов MoE (EPLB), совместно оптимизирующие маппинг «эксперт → GPU» и all-to-all-коммуникации, чтобы минимизировать перегрузку сети и хвостовую задержку.",
                     "Глубокое знание стека обслуживания: continuous batching и вытесняющее планирование, fused-коммуникации, квантизация FP8/INT8, спекулятивное декодирование и trade-off оптимизации.",
                 ]),
@@ -212,7 +214,11 @@ def build_page(lang):
                 parts.append(f'<div class="job">{icon}<span class="role">{esc(role)}</span> '
                              f'<span class="dates">· {esc(dates)}</span><ul>')
                 for b in bullets:
-                    parts.append(f'<li>{esc(b)}</li>')
+                    if isinstance(b, tuple):
+                        btext, bdocs = b
+                        parts.append(f'<li>{esc(btext)} <a class="doc-badge" href="{esc(bdocs)}" target="_blank" rel="noopener">{esc(T["doc"])}</a></li>')
+                    else:
+                        parts.append(f'<li>{esc(b)}</li>')
                 parts.append('</ul></div>')
             elif kind == 'entry':
                 _, ikey, text, url, subs = it
@@ -300,6 +306,10 @@ CSS = '''
   .job .role { font-weight:700; }
   .job .dates { color:var(--muted); font-style:italic; white-space:nowrap; }
   .cicon { width:16px; height:16px; border-radius:3px; margin-right:7px; vertical-align:-3px; object-fit:contain; }
+  .doc-badge { display:inline-flex; align-items:center; gap:4px; font-size:11.5px; font-weight:600;
+               color:var(--accent); border:1px solid var(--accent); border-radius:999px; padding:1px 9px;
+               vertical-align:1px; white-space:nowrap; text-decoration:none; }
+  .doc-badge:hover { background:var(--accent); color:#fff; text-decoration:none; }
   ul { margin:4px 0 0; padding-left:20px; }
   li { margin:2px 0; }
   .sub { list-style:none; padding-left:18px; color:#374151; }
