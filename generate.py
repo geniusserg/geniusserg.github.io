@@ -200,8 +200,8 @@ def build_page(lang):
     pdf_file = 'resume-ru.pdf' if lang == 'ru' else 'resume.pdf'
     pdf_name = 'Danilov_Sergey_Resume_RU.pdf' if lang == 'ru' else 'Danilov_Sergey_Resume.pdf'
     parts.append('<div class="head-right">')
-    parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
     parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
+    parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
     parts.append('</div>')
     parts.append('</header>')
     parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
@@ -395,6 +395,10 @@ function setCount(n) {
   document.querySelectorAll('.like-count').forEach(function(el){ el.textContent = n; });
 }
 
+function setViewCount(n) {
+  document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
+}
+
 function getToggles() {
   var n = 0;
   try { n = parseInt(localStorage.getItem('resume-toggle-count'), 10); } catch(e) {}
@@ -445,12 +449,20 @@ function toggleLike() {
     var n = parseInt(d && d.result, 10);
     if (!isNaN(n)) setCount(n < 0 ? 0 : n);
   }).catch(function(){});
-  upstash(['INCR', VIEW_KEY]).then(function(d){
-    var n = parseInt(d && d.result, 10);
-    if (!isNaN(n)) {
-      document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
-    }
-  }).catch(function(){});
+  var viewed = null;
+  try { viewed = localStorage.getItem('resume-viewed') === '1'; } catch(e) { viewed = false; }
+  if (viewed) {
+    upstash(['GET', VIEW_KEY]).then(function(d){
+      var n = parseInt(d && d.result, 10);
+      if (!isNaN(n)) setViewCount(n);
+    }).catch(function(){});
+  } else {
+    upstash(['INCR', VIEW_KEY]).then(function(d){
+      var n = parseInt(d && d.result, 10);
+      if (!isNaN(n)) setViewCount(n);
+      try { localStorage.setItem('resume-viewed', '1'); } catch(e) {}
+    }).catch(function(){});
+  }
 })();
 </script>'''
 
