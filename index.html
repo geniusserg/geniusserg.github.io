@@ -63,6 +63,7 @@
   .head .contact { margin-top:10px; color:var(--muted); font-size:13.5px;
                    display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
   .head .contact .contact-text a { color:var(--accent); }
+  .views { margin-top:6px; color:var(--muted); font-size:12.5px; }
   .btn { margin-left:auto; background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
          font-weight:600; font-size:14px; white-space:nowrap; flex:0 0 auto; }
   .btn:hover { text-decoration:none; filter:brightness(1.08); }
@@ -114,6 +115,7 @@
   .like-btn.liked .like-count { background:#ffe4e6; color:#f43f5e; }
   @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
   .foot-note { margin-top:10px; }
+  .foot-contact { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; margin-top:14px; }
   @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
   @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
   .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
@@ -122,7 +124,7 @@
   @media print{
     body{ background:#fff; }
     .page{ border:0; box-shadow:none; margin:0; max-width:none; border-radius:0; padding:0; animation:none; }
-    .btn,.langbar,.like-btn{ display:none; }
+    .btn,.langbar,.like-btn,.views,.foot-contact{ display:none; }
     .cb{ box-shadow:none; }
   }
 </style>
@@ -137,7 +139,9 @@
 <a class="cb cb-tg" href="https://t.me/geniusserg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>@geniusserg</a>
 <a class="cb cb-mail" href="mailto:danilovsergeyd@vk.com"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>danilovsergeyd@vk.com</a>
 <a class="cb cb-in" href="https://www.linkedin.com/in/geniusserg/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>linkedin.com/in/geniusserg</a>
-</div></div>
+</div>
+<div class="views">👁 <span class="view-count">0</span> views</div>
+</div>
 <a class="btn" href="resume.pdf" download="Danilov_Sergey_Resume.pdf">⬇ Download PDF</a>
 </header>
 <div class="summary">ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into reliable, high-availability services with measurable SLO.</div>
@@ -189,6 +193,7 @@
 <ul class="plain"><li>Russian, English (B1)</li></ul>
 <footer>
 <button class="like-btn" onclick="toggleLike()" aria-label="Like"><svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="like-label" data-like="Like" data-liked="Liked">Like</span><span class="like-count">0</span></button>
+<div class="foot-contact"><a class="cb cb-tg" href="https://t.me/geniusserg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>@geniusserg</a><a class="cb cb-mail" href="mailto:danilovsergeyd@vk.com"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>danilovsergeyd@vk.com</a><a class="cb cb-in" href="https://www.linkedin.com/in/geniusserg/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>linkedin.com/in/geniusserg</a></div>
 <div class="foot-note">Danilov Sergey Dmitrievich · Resume</div>
 </footer></div>
 <div class="page" id="page-ru" lang="ru" hidden><div class="langbar"><button class="langbtn" data-lang="en" onclick="setLang('en')">EN</button><button class="langbtn" data-lang="ru" onclick="setLang('ru')">RU</button></div>
@@ -201,7 +206,9 @@
 <a class="cb cb-tg" href="https://t.me/geniusserg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>@geniusserg</a>
 <a class="cb cb-mail" href="mailto:danilovsergeyd@vk.com"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>danilovsergeyd@vk.com</a>
 <a class="cb cb-in" href="https://www.linkedin.com/in/geniusserg/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>linkedin.com/in/geniusserg</a>
-</div></div>
+</div>
+<div class="views">👁 <span class="view-count">0</span> просмотров</div>
+</div>
 <a class="btn" href="resume-ru.pdf" download="Danilov_Sergey_Resume_RU.pdf">⬇ Скачать PDF</a>
 </header>
 <div class="summary">ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — и превращает модели в надёжные высокодоступные сервисы с измеримым SLO.</div>
@@ -253,6 +260,7 @@
 <ul class="plain"><li>Русский, английский (B1)</li></ul>
 <footer>
 <button class="like-btn" onclick="toggleLike()" aria-label="Нравится"><svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span class="like-label" data-like="Нравится" data-liked="Спасибо">Нравится</span><span class="like-count">0</span></button>
+<div class="foot-contact"><a class="cb cb-tg" href="https://t.me/geniusserg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>@geniusserg</a><a class="cb cb-mail" href="mailto:danilovsergeyd@vk.com"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>danilovsergeyd@vk.com</a><a class="cb cb-in" href="https://www.linkedin.com/in/geniusserg/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>linkedin.com/in/geniusserg</a></div>
 <div class="foot-note">Данилов Сергей Дмитриевич · Резюме</div>
 </footer></div>
 
@@ -277,6 +285,7 @@ var UPSTASH_URL = 'https://romantic-pug-216854.upstash.io';
 var UPSTASH_TOKEN = 'gQAAAAAAA08WAAIgcDIwYjE5ZTQwOThmM2U0NTdlYWYyMzg2NzM5MzVlMDFiMw';
 var LIKE_KEY = 'like_count';
 var MAX_TOGGLES = 10;
+var VIEW_KEY = 'view_count';
 
 function upstash(cmd) {
   return fetch(UPSTASH_URL, {
@@ -347,6 +356,12 @@ function toggleLike() {
   upstash(['GET', LIKE_KEY]).then(function(d){
     var n = parseInt(d && d.result, 10);
     if (!isNaN(n)) setCount(n < 0 ? 0 : n);
+  }).catch(function(){});
+  upstash(['INCR', VIEW_KEY]).then(function(d){
+    var n = parseInt(d && d.result, 10);
+    if (!isNaN(n)) {
+      document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
+    }
   }).catch(function(){});
 })();
 </script>

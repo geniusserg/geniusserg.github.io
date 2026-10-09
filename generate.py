@@ -39,6 +39,7 @@ I18N = {
         'download': '⬇ Download PDF',
         'like': 'Like',
         'liked': 'Liked',
+        'views': 'views',
         'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
                     "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
                     "MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into "
@@ -102,6 +103,7 @@ I18N = {
         'download': '⬇ Скачать PDF',
         'like': 'Нравится',
         'liked': 'Спасибо',
+        'views': 'просмотров',
         'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
                     "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
                     "MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — "
@@ -192,7 +194,9 @@ def build_page(lang):
             texts.append(seg)
     parts.append('<span class="contact-text">' + ' · '.join(texts) + '</span>')
     parts.extend(buttons)
-    parts.append('</div></div>')
+    parts.append('</div>')
+    parts.append(f'<div class="views">👁 <span class="view-count">0</span> {esc(T["views"])}</div>')
+    parts.append('</div>')
     pdf_file = 'resume-ru.pdf' if lang == 'ru' else 'resume.pdf'
     pdf_name = 'Danilov_Sergey_Resume_RU.pdf' if lang == 'ru' else 'Danilov_Sergey_Resume.pdf'
     parts.append(f'<a class="btn" href="{pdf_file}" download="{pdf_name}">{esc(T["download"])}</a>')
@@ -243,6 +247,7 @@ def build_page(lang):
                  f'<span class="like-label" data-like="{esc(T["like"])}" data-liked="{esc(T["liked"])}">{esc(T["like"])}</span>'
                  '<span class="like-count">0</span>'
                  '</button>')
+    parts.append('<div class="foot-contact">' + ''.join(buttons) + '</div>')
     parts.append(f'<div class="foot-note">{esc(T["footer"])}</div>')
     parts.append('</footer>')
     return '\n'.join(parts)
@@ -268,6 +273,7 @@ CSS = '''
   .head .contact { margin-top:10px; color:var(--muted); font-size:13.5px;
                    display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
   .head .contact .contact-text a { color:var(--accent); }
+  .views { margin-top:6px; color:var(--muted); font-size:12.5px; }
   .btn { margin-left:auto; background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px;
          font-weight:600; font-size:14px; white-space:nowrap; flex:0 0 auto; }
   .btn:hover { text-decoration:none; filter:brightness(1.08); }
@@ -319,6 +325,7 @@ CSS = '''
   .like-btn.liked .like-count { background:#ffe4e6; color:#f43f5e; }
   @keyframes heartPop { 0%{transform:scale(1)} 35%{transform:scale(1.45)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
   .foot-note { margin-top:10px; }
+  .foot-contact { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; margin-top:14px; }
   @media (max-width:560px){ .page{padding:24px 18px;margin:0;border:0;border-radius:0} header{flex-direction:column;text-align:center} h1{font-size:26px} }
   @keyframes fadeUp { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
   .page { animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) both; }
@@ -327,7 +334,7 @@ CSS = '''
   @media print{
     body{ background:#fff; }
     .page{ border:0; box-shadow:none; margin:0; max-width:none; border-radius:0; padding:0; animation:none; }
-    .btn,.langbar,.like-btn{ display:none; }
+    .btn,.langbar,.like-btn,.views,.foot-contact{ display:none; }
     .cb{ box-shadow:none; }
   }
 </style>'''
@@ -354,6 +361,7 @@ var UPSTASH_URL = 'https://romantic-pug-216854.upstash.io';
 var UPSTASH_TOKEN = 'gQAAAAAAA08WAAIgcDIwYjE5ZTQwOThmM2U0NTdlYWYyMzg2NzM5MzVlMDFiMw';
 var LIKE_KEY = 'like_count';
 var MAX_TOGGLES = 10;
+var VIEW_KEY = 'view_count';
 
 function upstash(cmd) {
   return fetch(UPSTASH_URL, {
@@ -424,6 +432,12 @@ function toggleLike() {
   upstash(['GET', LIKE_KEY]).then(function(d){
     var n = parseInt(d && d.result, 10);
     if (!isNaN(n)) setCount(n < 0 ? 0 : n);
+  }).catch(function(){});
+  upstash(['INCR', VIEW_KEY]).then(function(d){
+    var n = parseInt(d && d.result, 10);
+    if (!isNaN(n)) {
+      document.querySelectorAll('.view-count').forEach(function(el){ el.textContent = n; });
+    }
   }).catch(function(){});
 })();
 </script>'''
