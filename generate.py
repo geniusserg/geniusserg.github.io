@@ -53,6 +53,7 @@ I18N = {
                     ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency.",
                     "Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.",
+                    "LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3×.",
                 ]),
                 ('job', 'itmo', "ML Engineer — ITMO University", "November 2023 – September 2024", [
                     "Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.",
@@ -118,6 +119,7 @@ I18N = {
                     ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Комбинаторные алгоритмы размещения экспертов MoE (EPLB), совместно оптимизирующие маппинг «эксперт → GPU» и all-to-all-коммуникации, чтобы минимизировать перегрузку сети и хвостовую задержку.",
                     "Глубокое знание стека обслуживания: continuous batching и вытесняющее планирование, fused-коммуникации, квантизация FP8/INT8, спекулятивное декодирование и trade-off оптимизации.",
+                    "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза.",
                 ]),
                 ('job', 'itmo', "ML-инженер — Университет ИТМО", "Ноябрь 2023 – Сентябрь 2024", [
                     "Сбер и ИТМО: эмулятор пользователей на CTGAN; улучшил MAP@5 рекомендательной системы BiVAE на 3%.",
