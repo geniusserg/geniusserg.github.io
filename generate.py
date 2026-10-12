@@ -42,9 +42,9 @@ I18N = {
         'views': ['view', 'views', 'views'],
         'doc': '📄 doc',
         'summary': (
-            "ML/LLM Inference Engineer — owns the full lifecycle of production LLM serving and inference optimization.",
+            "ML/LLM Inference Engineer — owns the full lifecycle of LLM inference optimization.",
             [
-                ("Inference optimization", "Responsible for optimal, high-availability inference optimization: choosing the best DP/TP strategy, replica scheduling, and EPLB MoE placement strategies on a 256+ node cluster; reliability-aware scheduling with full-system simulation; LLMOps for vLLM optimization and quantization projects."),
+                ("Inference optimization", "Responsible for LLM serving optimization and achieving high reliability through researching new algorithms, modeling and validating their impact, and deploying them to customers. My tasks include choosing the best DP/TP strategy by modeling 10k-node inference clusters, tuning replica scheduling, and experimenting with different MoE EPLB placement strategies; reliability-aware scheduling using statistical approaches and discrete-event simulations; LLMOps methodologies for serving and deploying optimization code and supporting other LLM quantization research projects."),
                 ("Predictive reliability", "Responsible for failure forecasting and availability evaluation (Weibull modeling) of inference-cluster hardware (memory, NPUs, network) and software (vLLM, VeRL, agent workflows)."),
             ],
         ),
@@ -110,9 +110,9 @@ I18N = {
         'views': ['просмотр', 'просмотра', 'просмотров'],
         'doc': '📄 документация',
         'summary': (
-            "ML/LLM-инженер по инференсу — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.",
+            "ML/LLM-инженер по инференсу — владеет полным циклом оптимизации LLM-инференса.",
             [
-                ("Оптимизация инференса", "Отвечаю за оптимальную высокодоступную оптимизацию инференса — выбор лучшей DP/TP-стратегии, планирование реплик и стратегии размещения экспертов EPLB MoE на кластере 256+ узлов; планирование с учётом надёжности с полноценной симуляцией системы; LLMOps для оптимизации и квантизации vLLM."),
+                ("Оптимизация инференса", "Отвечаю за оптимизацию LLM-обслуживания и достижение высокой надёжности: исследую новые алгоритмы, моделирую и валидирую их влияние, а затем внедряю их заказчикам. В мои задачи входят выбор лучшей DP/TP-стратегии через моделирование инференс-кластеров на 10 тыс. узлов, настройка планирования реплик и эксперименты с различными стратегиями размещения MoE EPLB; планирование с учётом надёжности на основе статистических подходов и дискретно-событийных симуляций; LLMOps-методологии для обслуживания и деплоя кода оптимизации, а также поддержка исследовательских проектов по квантизации LLM."),
                 ("Предиктивная надёжность", "Отвечаю за прогнозирование отказов и оценку доступности (моделирование по Вейбуллу) аппаратной части инференс-кластера (память, NPU, сеть) и ПО (vLLM, VeRL, agent-воркфлоу)."),
             ],
         ),
