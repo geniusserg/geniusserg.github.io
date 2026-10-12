@@ -44,7 +44,7 @@ I18N = {
         'summary': (
             "ML/LLM Inference Engineer — I own the full lifecycle of LLM inference optimization and reliability improvement. I research new SOTA algorithms, model and validate their impact, and deploy them to customer environments.",
             [
-                ("Inference optimization", "My tasks include:", [
+                ("My tasks include:", [
                     "Choosing the best DP/TP strategy by modeling 10k-node inference clusters",
                     "tuning replica scheduling and experimenting with different MoE EPLB placement strategies",
                     "inference strategies considering the reliability of individual inference-cluster elements (memory, NPUs, network, software — vLLM, VeRL, Agents) based on statistical approaches and discrete-event simulations",
@@ -117,7 +117,7 @@ I18N = {
         'summary': (
             "ML/LLM-инженер по инференсу — владею полным циклом оптимизации и улучшением надёжности LLM-инференса. Исследую новые SOTA-алгоритмы, моделирую и валидирую их влияние, а затем внедряю их в окружение заказчика.",
             [
-                ("Оптимизация инференса", "В мои задачи входят:", [
+                ("В мои задачи входит:", [
                     "выбор лучшей DP/TP-стратегии через моделирование инференс-кластеров на 10 тыс. узлов",
                     "настройка планирования реплик и эксперименты с различными стратегиями размещения MoE EPLB",
                     "стратегии инференса с учётом надёжности отдельных элементов инференс-кластера (память, NPU, сеть, ПО — vLLM, VeRL, Agents) на основе статистических подходов и дискретно-событийных симуляций",
@@ -231,9 +231,9 @@ def build_page(lang):
     parts.append(f'<div class="summary">{esc(lead)}</div>')
     parts.append('<div class="sblocks">')
     for block in blocks:
-        if len(block) == 3:
-            label, intro, items = block
-            parts.append(f'<div class="sblock"><span class="sblock-l">{esc(label)}</span> — {esc(intro)}</div>')
+        if isinstance(block[1], list):
+            intro, items = block
+            parts.append(f'<div class="sblock">{esc(intro)}</div>')
             parts.append('<ul class="sblock-ul">')
             for it in items:
                 parts.append(f'<li>{esc(it)}</li>')
@@ -345,11 +345,11 @@ CSS = '''
   .yt:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,0,0,.4); text-decoration:none; }
   .summary { margin:20px 0 4px; font-size:16px; line-height:1.6; color:#1f2937;
              border-left:4px solid var(--accent); padding:6px 0 6px 16px; }
-  .sblocks { margin:10px 0 6px; display:flex; flex-direction:column; gap:6px; }
+  .sblocks { margin:8px 0 6px; display:flex; flex-direction:column; gap:4px; }
   .sblock { font-size:15px; line-height:1.5; color:#374151; }
   .sblock-l { font-weight:600; color:var(--accent); }
-  .sblock-ul { margin:2px 0 8px 20px; padding:0; }
-  .sblock-ul li { font-size:15px; line-height:1.5; color:#374151; margin-bottom:4px; }
+  .sblock-ul { margin:2px 0 8px 14px; padding:0; }
+  .sblock-ul li { font-size:15px; line-height:1.5; color:#374151; margin-bottom:3px; }
   h2 { text-transform:uppercase; font-size:13px; letter-spacing:1.4px; color:var(--accent);
        border-bottom:1px solid var(--line); padding-bottom:5px; margin:26px 0 12px; }
   .job { margin:0 0 14px; }
