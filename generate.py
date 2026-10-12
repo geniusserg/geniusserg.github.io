@@ -53,21 +53,21 @@ I18N = {
                 ('job', 'huawei', "Huawei — LLM Inference R&D Engineer", "September 2024 – present", [
                     "Developed topology-aware combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-NPU mapping with all-to-all communication and fused kernels to minimize network congestion and tail latency — up to 10% lower network imbalance and 5% TPOT improvement (95% CI ±1%).",
                     "LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3× (PyTorch, vLLM, DeepEval).",
-                    "Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and a Markov request-traffic generator; selects TP/DP/SP/EP topology, scheduling, and fault-recovery policy to hold 99.99% SLO. The same simulator was used to test the RL (VeRL) rollout-worker recovery strategy, cutting recovery time from 10 to 5 minutes and keeping the TPOT drop under failure scenarios to no more than 5%.",
-                    ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
-                    "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model (1M params) that runs on small chips raised cluster availability by +10% (no signal-to-noise requirement — raw optical-sensor data only). Used sktime for statistical and ML time-series analysis and PyTorch for clustering and pattern discovery.",
+                    "Disaggregated Prefill/Decode cluster simulator — Python discrete-event simulation of a distributed prefill/decode system with KV-cache-locality-aware load balancing and a Markov request-traffic generator; tested hypotheses for TP/DP/SP/EP topology, scheduling policy, and fast fault recovery to hold the customer's 99.99% SLO. The same simulator was used to test the RL (VeRL) rollout-worker recovery strategy, cutting recovery time from 10 to 5 minutes and keeping the TPOT drop under failures to no more than 5%.",
+                    ("Designed a NUMA-aware memory stress test that reached 95% of theoretical bandwidth; modeled MTTR with a Weibull distribution and built an XGBoost failure-forecasting model that cut memory-related repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
+                    "Trained a time-series clustering model on optical-power telemetry that flags degrading links early; a minimal-parameter model (1M params) running on small chips raised cluster availability by +10% with no signal-to-noise requirement — only raw optical-sensor data without link-failure labels. Used sktime for statistical and ML time-series analysis and PyTorch for model training.",
                     "Integrated my projects as MCP tools into the internal Harness agent lab.",
                 ]),
                 ('job', 'itmo', "ML Engineer — ITMO University", "November 2023 – September 2024", [
-                    "Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.",
-                    ("Almazov & ITMO: Shapley-valued weighted XGBoost for obesity treatment; 71% accuracy for 3-month sibutramine therapy response; 2 Q2 papers.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
+                    "Sber & ITMO: designed a CTGAN user emulator, used the synthetic data to train BiVAE for the VK feed, and improved MAP@5 by 3% on open data.",
+                    ("Almazov & ITMO: applied my master's thesis on Shapley-value weighting of small datasets to train an XGBoost model for predicting obesity-treatment success; improved accuracy from 65% to 71% (+7%) for 3-month sibutramine therapy response; 2 Q2 papers.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
                     "Industrial AI assistant: improved PDF NER with prompt engineering/self-consistency; filtering removed 80% repetition.",
                 ]),
                 ('job', 'harman', "Testing Engineer — Harman", "September 2021 – July 2022", [
                     "Sped up testing for complex GPS automotive systems with Robot Framework",
                 ]),
                 ('job', 'intel', "Release Engineer — Intel", "July 2019 – August 2021", [
-                    "Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and installer.",
+                    "Supported Intel OneAPI HPC release infrastructure: Python/Bash installation automation and desktop installer development.",
                 ]),
             ]),
             ("Tech Stack", [
@@ -85,11 +85,11 @@ I18N = {
             ("Publications", [
                 ('bullet', "Google Scholar · h-index 2", "https://scholar.google.com/citations?user=sD1qs3QAAAAJ"),
                 ('bullet', "Danilov et al., J. Pers. Med. 2024, 14, 811 — sibutramine therapy prediction.", "https://doi.org/10.3390/jpm14080811"),
-                ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — brown adipose tissue and obesity treatment.", "https://doi.org/10.3390/jcm13144151"),
+                ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — statistical methods for studying brown adipose tissue and its effect on obesity treatment.", "https://doi.org/10.3390/jcm13144151"),
             ]),
             ("Competitions", [
                 ('entry', None, "ScienceRAG — Research assistant agent based on GigaChat", None, [
-                    ("ScienceRAG: improved ArXiv RAG retrieval on GigaChat", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
+                    ("ScienceRAG: improved ArXiv RAG retrieval with a GigaChat-based agent.", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
                 ]),
                 ('entry', None, "X5 AI Tech Hackathon — Hallucination detection algorithm", None, [
                     ("X5 AI Tech: ruBERT hallucination detector — 88% accuracy, <0.45 s inference; top-10.", "https://codenrock.com/users/79846/certificates/250"),
@@ -121,22 +121,22 @@ I18N = {
             ("Опыт работы", [
                 ('job', 'huawei', "Huawei — R&D-инженер по LLM-инференсу", "Сентябрь 2024 – настоящее время", [
                     "Разработал топологически-зависимые комбинаторные алгоритмы размещения экспертов EPLB MoE, совместно оптимизирующие маппинг «эксперт → NPU» с all-to-all-коммуникациями и fused-ядрами для минимизации перегрузки сети и хвостовой задержки — до 10% снижения сетевого дисбаланса и 5% улучшения TPOT (95% ДИ ±1%).",
-                    "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза (PyTorch, vLLM, DeepEval).",
-                    "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и генератором марковского трафика запросов; выбор топологии TP/DP/SP/EP, политики планирования и восстановления после сбоев для удержания SLO 99,99%. Тот же симулятор использовался для тестирования стратегии восстановления RL-воркеров (VeRL): время восстановления снижено с 10 до 5 минут, а падение TPOT при сбоях — не более 5%.",
-                    ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) снизили издержки от ошибок памяти в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
-                    "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров (1 млн параметров), работающая на малых чипах, повысила доступность кластера на +10% (без требования к signal-to-noise — только сырые данные оптических датчиков). Использовал sktime для статистического и ML-анализа временных рядов и PyTorch для кластеризации и поиска паттернов.",
+                    "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки. Ускорил цикл исследований в 3 раза (использовал PyTorch, vLLM, DeepEval).",
+                    "Симулятор disaggregated Prefill/Decode инференс-кластера — дискретно-событийное моделирование на Python распределённой системы prefill/decode с балансировкой нагрузки с учётом локальности KV-кэша и генератором марковского трафика запросов; тестировал гипотезы по выбору топологии TP/DP/SP/EP, политики планирования и быстрого восстановления после сбоев для удержания SLO заказчика 99,99%. Тот же симулятор использовался для тестирования стратегии восстановления RL-воркеров (VeRL): время восстановления снижено с 10 до 5 минут, а падение TPOT при сбоях — не более 5%.",
+                    ("Спроектировал NUMA-aware стресс-тест памяти, достигший 95% теоретической пропускной способности; по его результатам смоделировал MTTR распределением Вейбулла и построил модель прогнозирования отказов (XGBoost), снизившую издержки от ошибок памяти в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
+                    "Обучил модель кластеризации временных рядов телеметрии оптоволокна, которая заранее выявляет деградирующие каналы; модель с минимальным числом параметров (1 млн параметров), работающая на малых чипах, повысила доступность кластера на +10% без требования к signal-to-noise — только сырые показатели оптических датчиков без разметки падений связи. Использовал sktime для статистического и ML-анализа временных рядов и PyTorch для обучения модели.",
                     "Интегрировал свои проекты как MCP-инструменты во внутреннюю лабораторию Harness-агентов.",
                 ]),
                 ('job', 'itmo', "ML-инженер — Университет ИТМО", "Ноябрь 2023 – Сентябрь 2024", [
-                    "Сбер и ИТМО: эмулятор пользователей на CTGAN; улучшил MAP@5 рекомендательной системы BiVAE на 3%.",
-                    ("Алмазова и ИТМО: взвешенный XGBoost с весами Шепли для лечения ожирения; точность 71% в прогнозе ответа на терапию сибутрамином за 3 месяца; 2 статьи Q2.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
+                    "Сбер и ИТМО: спроектировал эмулятор пользователей на CTGAN, применил синтезированные данные при обучении BiVAE для ленты VK и добился улучшения метрики MAP@5 на 3% при тесте на открытых данных.",
+                    ("Алмазова и ИТМО: применил исследование из магистерского диплома по ранжированию малых данных с помощью чисел Шепли при обучении модели XGBoost для предсказания успеха лечения ожирения; улучшил точность с 65% до 71% (+7%) в прогнозе ответа на терапию сибутрамином за 3 месяца; 2 статьи Q2.", [("📄 J. Pers. Med.", "https://doi.org/10.3390/jpm14080811"), ("📄 J. Clin. Med.", "https://doi.org/10.3390/jcm13144151")]),
                     "Промышленный ИИ-ассистент: улучшил NER по PDF с помощью prompt engineering/self-consistency; фильтрация убрала 80% повторов.",
                 ]),
                 ('job', 'harman', "Инженер по тестированию — Harman", "Сентябрь 2021 – Июль 2022", [
                     "Ускорил тестирование сложных автомобильных GPS-систем с помощью Robot Framework",
                 ]),
                 ('job', 'intel', "Release-инженер — Intel", "Июль 2019 – Август 2021", [
-                    "Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация на Python/Bash и инсталлятор.",
+                    "Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация установочных алгоритмов на Python/Bash и разработка Desktop-инсталлятора.",
                 ]),
             ]),
             ("Технологии", [
@@ -145,7 +145,7 @@ I18N = {
             ]),
             ("Образование", [
                 ('entry', 'itmo', "Университет ИТМО, 2024 — магистратура по анализу данных", None, [
-                    "Диплом: фильтрация с весами Шепли для ML на малых выборках; +7% точности на медицинских данных.",
+                    "Диплом: Фильтрация сэмплов с весами Шепли для ML на малых выборках; +7% точности на малых медицинских данных.",
                 ]),
                 ('entry', 'hse', "НИУ ВШЭ, 2022 — бакалавриат по программной инженерии", None, [
                     "Диплом: доступный ассистент для слабовидящих пользователей на базе Yandex Cloud OCR.",
@@ -154,18 +154,18 @@ I18N = {
             ("Публикации", [
                 ('bullet', "Google Scholar · индекс Хирша 2", "https://scholar.google.com/citations?user=sD1qs3QAAAAJ"),
                 ('bullet', "Danilov et al., J. Pers. Med. 2024, 14, 811 — прогнозирование терапии сибутрамином.", "https://doi.org/10.3390/jpm14080811"),
-                ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — бурая жировая ткань и лечение ожирения.", "https://doi.org/10.3390/jcm13144151"),
+                ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — статистические методы для исследования бурой жировой ткани и её влияния на лечение ожирения.", "https://doi.org/10.3390/jcm13144151"),
             ]),
             ("Хакатоны", [
                 ('entry', None, "ScienceRAG — исследовательский ассистент-агент на базе GigaChat", None, [
-                    ("ScienceRAG: улучшил RAG-поиск по arXiv на GigaChat", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
+                    ("ScienceRAG: улучшил RAG-поиск по arXiv с помощью агента на основе GigaChat", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
                 ]),
                 ('entry', None, "X5 AI Tech Hackathon — алгоритм детекции галлюцинаций", None, [
                     ("X5 AI Tech: детектор галлюцинаций на ruBERT — точность 88%, инференс <0,45 с; топ-10.", "https://codenrock.com/users/79846/certificates/250"),
                 ]),
             ]),
             ("Языки", [
-                ('bullet', "Русский, английский (B1)", None),
+                ('bullet', "Русский, Английский (B1)", None),
             ]),
         ],
     },
