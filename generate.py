@@ -42,9 +42,14 @@ I18N = {
         'views': ['view', 'views', 'views'],
         'doc': '📄 doc',
         'summary': (
-            "ML/LLM Inference Engineer — owns the full lifecycle of LLM inference optimization.",
+            "ML/LLM Inference Engineer — I own the full lifecycle of LLM inference optimization and reliability improvement. I research new SOTA algorithms, model and validate their impact, and deploy them to customer environments.",
             [
-                ("Inference optimization", "Responsible for LLM serving optimization and achieving high reliability through researching new algorithms, modeling and validating their impact, and deploying them to customers. My tasks include choosing the best DP/TP strategy by modeling 10k-node inference clusters, tuning replica scheduling, and experimenting with different MoE EPLB placement strategies; reliability-aware scheduling using statistical approaches and discrete-event simulations; LLMOps methodologies for serving and deploying optimization code and supporting other LLM quantization research projects."),
+                ("Inference optimization", "My tasks include:", [
+                    "Choosing the best DP/TP strategy by modeling 10k-node inference clusters",
+                    "tuning replica scheduling and experimenting with different MoE EPLB placement strategies",
+                    "reliability-aware scheduling of individual inference-cluster elements using statistical approaches and discrete-event simulations",
+                    "LLMOps methodologies for serving and deploying optimization code, including for use in multi-agent systems",
+                ]),
                 ("Predictive reliability", "Responsible for failure forecasting and availability evaluation (Weibull modeling) of inference-cluster hardware (memory, NPUs, network) and software (vLLM, VeRL, agent workflows)."),
             ],
         ),
@@ -111,9 +116,14 @@ I18N = {
         'views': ['просмотр', 'просмотра', 'просмотров'],
         'doc': '📄 документация',
         'summary': (
-            "ML/LLM-инженер по инференсу — владеет полным циклом оптимизации LLM-инференса.",
+            "ML/LLM-инженер по инференсу — владею полным циклом оптимизации и улучшением надёжности LLM-инференса. Исследую новые SOTA-алгоритмы, моделирую и валидирую их влияние, а затем внедряю их в окружение заказчика.",
             [
-                ("Оптимизация инференса", "Отвечаю за оптимизацию LLM-обслуживания и достижение высокой надёжности: исследую новые алгоритмы, моделирую и валидирую их влияние, а затем внедряю их в окружение заказчика. В мои задачи входят выбор лучшей DP/TP-стратегии через моделирование инференс-кластеров на 10 тыс. узлов, настройка планирования реплик и эксперименты с различными стратегиями размещения MoE EPLB; планирование с учётом надёжности отдельных элементов инференс кластера на основе статистических подходов и дискретно-событийных симуляций; LLMOps-методологии для обслуживания и деплоя кода оптимизации, а также поддержка исследовательских проектов по квантизации LLM."),
+                ("Оптимизация инференса", "В мои задачи входят:", [
+                    "выбор лучшей DP/TP-стратегии через моделирование инференс-кластеров на 10 тыс. узлов",
+                    "настройка планирования реплик и эксперименты с различными стратегиями размещения MoE EPLB",
+                    "планирование с учётом надёжности отдельных элементов инференс-кластера на основе статистических подходов и дискретно-событийных симуляций",
+                    "LLMOps-методологии для обслуживания и деплоя кода оптимизации, в том числе для использования в мульти-агентных системах",
+                ]),
                 ("Предиктивная надёжность", "Отвечаю за прогнозирование отказов и оценку доступности (моделирование по Вейбуллу) аппаратной части инференс-кластера (память, NPU, сеть) и ПО (vLLM, VeRL, agent-воркфлоу)."),
             ],
         ),
@@ -222,8 +232,17 @@ def build_page(lang):
     lead, blocks = T["summary"]
     parts.append(f'<div class="summary">{esc(lead)}</div>')
     parts.append('<div class="sblocks">')
-    for label, text in blocks:
-        parts.append(f'<div class="sblock"><span class="sblock-l">{esc(label)}</span> — {esc(text)}</div>')
+    for block in blocks:
+        if len(block) == 3:
+            label, intro, items = block
+            parts.append(f'<div class="sblock"><span class="sblock-l">{esc(label)}</span> — {esc(intro)}</div>')
+            parts.append('<ul class="sblock-ul">')
+            for it in items:
+                parts.append(f'<li>{esc(it)}</li>')
+            parts.append('</ul>')
+        else:
+            label, text = block
+            parts.append(f'<div class="sblock"><span class="sblock-l">{esc(label)}</span> — {esc(text)}</div>')
     parts.append('</div>')
     for heading, items in T['sections']:
         parts.append(f'<h2>{esc(heading)}</h2>')
@@ -331,6 +350,8 @@ CSS = '''
   .sblocks { margin:10px 0 6px; display:flex; flex-direction:column; gap:6px; }
   .sblock { font-size:13.5px; line-height:1.45; color:#374151; }
   .sblock-l { font-weight:600; color:var(--accent); }
+  .sblock-ul { margin:2px 0 6px 18px; padding:0; }
+  .sblock-ul li { font-size:13.5px; line-height:1.45; color:#374151; margin-bottom:2px; }
   h2 { text-transform:uppercase; font-size:13px; letter-spacing:1.4px; color:var(--accent);
        border-bottom:1px solid var(--line); padding-bottom:5px; margin:26px 0 12px; }
   .job { margin:0 0 14px; }
