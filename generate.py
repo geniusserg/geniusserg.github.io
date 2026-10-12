@@ -41,10 +41,14 @@ I18N = {
         'liked': 'Liked',
         'views': ['view', 'views', 'views'],
         'doc': '📄 doc',
-        'summary': ("ML/LLMOps Engineer who owns the full lifecycle of production ML and LLM serving — "
-                    "model deployment, distributed inference, GPU orchestration, vLLM and VeRL, batching and scheduling, "
-                    "MoE routing, and predictive reliability of cluster hardware (memory, network) — turning models into "
-                    "reliable, high-availability services with measurable SLO."),
+        'summary': (
+            "ML/LLMOps Engineer — owns the full lifecycle of production LLM serving and inference optimization.",
+            [
+                ("Inference optimization", "EPLB MoE expert placement + FP8/INT8 quantization: responsible from algorithm design to multi-node vLLM deployment, benchmarks, and dashboards; LLMOps for a quantization project — notebook → deployed model → benchmarks, 3× faster research."),
+                ("Serving & scheduling", "Disaggregated Prefill/Decode simulator (C++): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery."),
+                ("Predictive reliability", "NUMA/Weibull memory-failure forecasting + optical-power telemetry clustering: responsible for +10% cluster availability and 2× lower repair costs."),
+            ],
+        ),
         'sections': [
             ("Career", [
                 ('job', 'huawei', "Huawei — LLM Inference R&D Engineer", "September 2024 – present", [
@@ -107,10 +111,14 @@ I18N = {
         'liked': 'Спасибо',
         'views': ['просмотр', 'просмотра', 'просмотров'],
         'doc': '📄 документация',
-        'summary': ("ML/LLMOps-инженер, который владеет полным циклом эксплуатации ML и LLM в продакшене — "
-                    "деплой моделей, распределённый инференс, оркестрация GPU, vLLM и VeRL, батчинг и планирование, "
-                    "MoE-маршрутизация и прогнозирование отказов кластерного оборудования (память, сеть) — "
-                    "и превращает модели в надёжные высокодоступные сервисы с измеримым SLO."),
+        'summary': (
+            "ML/LLMOps-инженер — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.",
+            [
+                ("Оптимизация инференса", "EPLB-размещение экспертов MoE + квантизация FP8/INT8: отвечаю от разработки алгоритма до multi-node-деплоя в vLLM, бенчмарков и дашбордов; LLMOps проекта квантизации — ноутбук → модель → сервис, цикл исследований быстрее в 3 раза."),
+                ("Serving и планирование", "Симулятор disaggregated Prefill/Decode (C++): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM."),
+                ("Предиктивная надёжность", "Прогнозирование отказов памяти (NUMA/Вейбулл) + кластеризация телеметрии оптики: отвечаю за +10% доступности кластера и снижение издержек в 2 раза."),
+            ],
+        ),
         'sections': [
             ("Опыт работы", [
                 ('job', 'huawei', "Huawei — R&D-инженер по LLM-инференсу", "Сентябрь 2024 – настоящее время", [
@@ -213,7 +221,12 @@ def build_page(lang):
                  f'<span class="view-count">0</span> <span class="view-label">{esc(v[2])}</span>'
                  '</div>')
     parts.append('</header>')
-    parts.append(f'<div class="summary">{esc(T["summary"])}</div>')
+    lead, blocks = T["summary"]
+    parts.append(f'<div class="summary">{esc(lead)}</div>')
+    parts.append('<div class="sblocks">')
+    for label, text in blocks:
+        parts.append(f'<div class="sblock"><span class="sblock-l">{esc(label)}</span> — {esc(text)}</div>')
+    parts.append('</div>')
     for heading, items in T['sections']:
         parts.append(f'<h2>{esc(heading)}</h2>')
         for it in items:
@@ -317,6 +330,9 @@ CSS = '''
   .yt:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,0,0,.4); text-decoration:none; }
   .summary { margin:20px 0 4px; font-size:16px; line-height:1.6; color:#1f2937;
              border-left:4px solid var(--accent); padding:6px 0 6px 16px; }
+  .sblocks { margin:10px 0 6px; display:flex; flex-direction:column; gap:6px; }
+  .sblock { font-size:13.5px; line-height:1.45; color:#374151; }
+  .sblock-l { font-weight:600; color:var(--accent); }
   h2 { text-transform:uppercase; font-size:13px; letter-spacing:1.4px; color:var(--accent);
        border-bottom:1px solid var(--line); padding-bottom:5px; margin:26px 0 12px; }
   .job { margin:0 0 14px; }
