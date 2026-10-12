@@ -42,22 +42,20 @@ I18N = {
         'views': ['view', 'views', 'views'],
         'doc': '📄 doc',
         'summary': (
-            "ML/LLMOps Engineer — owns the full lifecycle of production LLM serving and inference optimization.",
+            "ML/LLM Inference Engineer — owns the full lifecycle of production LLM serving and inference optimization.",
             [
-                ("Inference optimization", "EPLB MoE expert placement + FP8/INT8 quantization: responsible from algorithm design to multi-node vLLM deployment, benchmarks, and dashboards; LLMOps for a quantization project — notebook → deployed model → benchmarks, 3× faster research."),
-                ("Serving & scheduling", "Disaggregated Prefill/Decode simulator (Python): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery."),
-                ("Predictive reliability", "NUMA/Weibull memory-failure forecasting + optical-power telemetry clustering: responsible for +10% cluster availability and 2× lower repair costs."),
+                ("Inference optimization", "Responsible for optimal, high-availability inference optimization: choosing the best DP/TP strategy, replica scheduling, and EPLB MoE placement strategies on a 256+ node cluster; reliability-aware scheduling with full-system simulation; LLMOps for vLLM optimization and quantization projects."),
+                ("Predictive reliability", "Responsible for failure forecasting and availability evaluation (Weibull modeling) of inference-cluster hardware (memory, NPUs, network) and software (vLLM, VeRL, agent workflows)."),
             ],
         ),
         'sections': [
             ("Career", [
                 ('job', 'huawei', "Huawei — LLM Inference R&D Engineer", "September 2024 – present", [
-                    "Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency; the same platform was used for multi-node deployment of the optimized EPLB algorithms in vLLM, running benchmarks, and building detailed dashboards.",
-                    "LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3×.",
-                    "Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.",
-                    "Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.",
+                    "Developed topology-aware combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-NPU mapping with all-to-all communication and fused kernels to minimize network congestion and tail latency — up to 10% lower network imbalance and 5% TPOT improvement (95% CI ±1%).",
+                    "LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3× (PyTorch, vLLM, DeepEval).",
+                    "Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and a Markov request-traffic generator; selects TP/DP/SP/EP topology, scheduling, and fault-recovery policy to hold 99.99% SLO. The same simulator was used to test the RL (VeRL) rollout-worker recovery strategy, cutting recovery time from 10 to 5 minutes and keeping the TPOT drop under failure scenarios to no more than 5%.",
                     ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
-                    "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model that raised cluster availability by +10%.",
+                    "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model (1M params) that runs on small chips raised cluster availability by +10% (no signal-to-noise requirement — raw optical-sensor data only). Used sktime for statistical and ML time-series analysis and PyTorch for clustering and pattern discovery.",
                 ]),
                 ('job', 'itmo', "ML Engineer — ITMO University", "November 2023 – September 2024", [
                     "Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.",
@@ -112,22 +110,20 @@ I18N = {
         'views': ['просмотр', 'просмотра', 'просмотров'],
         'doc': '📄 документация',
         'summary': (
-            "ML/LLMOps-инженер — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.",
+            "ML/LLM-инженер по инференсу — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.",
             [
-                ("Оптимизация инференса", "EPLB-размещение экспертов MoE + квантизация FP8/INT8: отвечаю от разработки алгоритма до multi-node-деплоя в vLLM, бенчмарков и дашбордов; LLMOps проекта квантизации — ноутбук → модель → сервис, цикл исследований быстрее в 3 раза."),
-                ("Serving и планирование", "Симулятор disaggregated Prefill/Decode (Python): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM."),
-                ("Предиктивная надёжность", "Прогнозирование отказов памяти (NUMA/Вейбулл) + кластеризация телеметрии оптики: отвечаю за +10% доступности кластера и снижение издержек в 2 раза."),
+                ("Оптимизация инференса", "Отвечаю за оптимальную высокодоступную оптимизацию инференса — выбор лучшей DP/TP-стратегии, планирование реплик и стратегии размещения экспертов EPLB MoE на кластере 256+ узлов; планирование с учётом надёжности с полноценной симуляцией системы; LLMOps для оптимизации и квантизации vLLM."),
+                ("Предиктивная надёжность", "Отвечаю за прогнозирование отказов и оценку доступности (моделирование по Вейбуллу) аппаратной части инференс-кластера (память, NPU, сеть) и ПО (vLLM, VeRL, agent-воркфлоу)."),
             ],
         ),
         'sections': [
             ("Опыт работы", [
                 ('job', 'huawei', "Huawei — R&D-инженер по LLM-инференсу", "Сентябрь 2024 – настоящее время", [
-                    "Комбинаторные алгоритмы размещения экспертов MoE (EPLB), совместно оптимизирующие маппинг «эксперт → GPU» и all-to-all-коммуникации, чтобы минимизировать перегрузку сети и хвостовую задержку; та же платформа использовалась для multi-node-деплоя оптимизированных EPLB-алгоритмов в vLLM, запуска бенчмарков и построения подробных дашбордов.",
-                    "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза.",
-                    "Глубокое знание стека обслуживания: continuous batching и вытесняющее планирование, fused-коммуникации, квантизация FP8/INT8, спекулятивное декодирование и trade-off оптимизации.",
-                    "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.",
-                    ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
-                    "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров повысила доступность кластера на +10%.",
+                    "Разработал топологически-зависимые комбинаторные алгоритмы размещения экспертов EPLB MoE, совместно оптимизирующие маппинг «эксперт → NPU» с all-to-all-коммуникациями и fused-ядрами для минимизации перегрузки сети и хвостовой задержки — до 10% снижения сетевого дисбаланса и 5% улучшения TPOT (95% ДИ ±1%).",
+                    "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза (PyTorch, vLLM, DeepEval).",
+                    "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и генератором марковского трафика запросов; выбор топологии TP/DP/SP/EP, политики планирования и восстановления после сбоев для удержания SLO 99,99%. Тот же симулятор использовался для тестирования стратегии восстановления RL-воркеров (VeRL): время восстановления снижено с 10 до 5 минут, а падение TPOT при сбоях — не более 5%.",
+                    ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) снизили издержки от ошибок памяти в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
+                    "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров (1 млн параметров), работающая на малых чипах, повысила доступность кластера на +10% (без требования к signal-to-noise — только сырые данные оптических датчиков). Использовал sktime для статистического и ML-анализа временных рядов и PyTorch для кластеризации и поиска паттернов.",
                 ]),
                 ('job', 'itmo', "ML-инженер — Университет ИТМО", "Ноябрь 2023 – Сентябрь 2024", [
                     "Сбер и ИТМО: эмулятор пользователей на CTGAN; улучшил MAP@5 рекомендательной системы BiVAE на 3%.",
