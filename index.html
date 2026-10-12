@@ -3,8 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danilov Sergey Dmitrievich — Resume</title>
 
-<meta name="description" content="Danilov Sergey Dmitrievich — LLM Inference R&D Engineer (Huawei). Distributed LLM inference, GPU orchestration, MoE, vLLM, PyTorch, C++, Kubernetes. Saint Petersburg, Russia.">
-<meta name="keywords" content="LLM inference engineer, ML engineer, AI engineer, distributed systems, GPU orchestration, vLLM, MoE, PyTorch, C++, Kubernetes, XGBoost, RAG, Sergey Danilov, Danilov Sergey, resume, CV, Saint Petersburg">
+<meta name="description" content="Danilov Sergey Dmitrievich — LLM Inference R&D Engineer (Huawei). Distributed LLM inference, GPU orchestration, MoE, vLLM, PyTorch, Kubernetes. Saint Petersburg, Russia.">
+<meta name="keywords" content="LLM inference engineer, ML engineer, AI engineer, distributed systems, GPU orchestration, vLLM, MoE, PyTorch, Kubernetes, XGBoost, RAG, Sergey Danilov, Danilov Sergey, resume, CV, Saint Petersburg">
 <meta name="author" content="Danilov Sergey Dmitrievich">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://geniusserg.github.io/">
@@ -38,7 +38,7 @@
     "https://github.com/geniusserg",
     "https://scholar.google.com/citations?user=sD1qs3QAAAAJ"
   ],
-  "knowsAbout": ["LLM inference", "distributed systems", "GPU orchestration", "vLLM", "MoE", "PyTorch", "C++", "Kubernetes", "XGBoost", "RAG", "recommender systems"]
+  "knowsAbout": ["LLM inference", "distributed systems", "GPU orchestration", "vLLM", "MoE", "PyTorch", "Kubernetes", "XGBoost", "RAG", "recommender systems"]
 }
 </script>
 
@@ -158,7 +158,7 @@
 <div class="summary">ML/LLMOps Engineer — owns the full lifecycle of production LLM serving and inference optimization.</div>
 <div class="sblocks">
 <div class="sblock"><span class="sblock-l">Inference optimization</span> — EPLB MoE expert placement + FP8/INT8 quantization: responsible from algorithm design to multi-node vLLM deployment, benchmarks, and dashboards; LLMOps for a quantization project — notebook → deployed model → benchmarks, 3× faster research.</div>
-<div class="sblock"><span class="sblock-l">Serving &amp; scheduling</span> — Disaggregated Prefill/Decode simulator (C++): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery.</div>
+<div class="sblock"><span class="sblock-l">Serving &amp; scheduling</span> — Disaggregated Prefill/Decode simulator (Python): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery.</div>
 <div class="sblock"><span class="sblock-l">Predictive reliability</span> — NUMA/Weibull memory-failure forecasting + optical-power telemetry clustering: responsible for +10% cluster availability and 2× lower repair costs.</div>
 </div>
 <h2>Career</h2>
@@ -166,7 +166,7 @@
 <li>Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency; the same platform was used for multi-node deployment of the optimized EPLB algorithms in vLLM, running benchmarks, and building detailed dashboards.</li>
 <li>LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3×.</li>
 <li>Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.</li>
-<li>Disaggregated Prefill/Decode simulator — C++ discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.</li>
+<li>Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.</li>
 <li>NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×. <a class="doc-badge" href="https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11" target="_blank" rel="noopener">📄 doc</a></li>
 <li>Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model that raised cluster availability by +10%.</li>
 </ul></div>
@@ -179,7 +179,7 @@
 <li>Sped up testing for complex GPS automotive systems with Robot Framework</li>
 </ul></div>
 <div class="job"><img class="cicon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACn0lEQVRYhe2UTWyLcRzHP7+2a7rNxGtsLkiMZeEoEnbwsg11JBIkDk7rtsbBEotTj4Ywr90ODhwQHDi0y0Z0hBDKFjLCRRB76bKXdi9d1j7Pz6FdKTOdSBz0c3qe38v3933yf35/yJIlS5b/HQHA5atCxY3oC7w7D2TUWetbi2lxUGB7T0NFOKOe5mAOHaFOAByWchq391gAUFkMWgqyImPrhtzCNJ8xGt+YcU9PriTmaClqzQGwAWDTFgwGsUh3xmJ/iYSBRctfMT70jrxYDFXhyOM5ABwvG8ETsDEQXYU1t5vGzcM/KajmUdeaz8ltY6mYJ2AjFC+mgO7fHU/iCPo+1hMJR+iLXsJ9t4hIOEIkHKHav5/e8UFi2sXE+BBVvqvUteanKZh6k9F4MDnYgct/gt7oCObkG8KTw7h8j6ltLZnZwK9QvQLyFJH7ychexoyjaTXCW6ADgN7xy6jWIfQjch0kiLIBw3iE27949gaQwzQ5K/E6tyJyLhncla5gqaNp5z6qW8qAPYg8xzFvNV7nXpqc6xBpQHUhcamfboJtxvl2+7Vvg+QOhrpRlk1bqzq1DYVMDLfh8k9l5ibz62dvYH7RUOrZpB8ASfaomgAY5tQqCyioKkLsO5UBhADol9kbmAmhH6UEkZWJd32CAiI2HJbdnN4+CEBNixOxdnK+shtPl/1Hmd/8AzMZkGcAKKeo8gfwOh8gchvVpUSNz1T523D5XmOYPuKxlxy6t2Q6mT83kJt7DMGHqIIWAuCYtw84jSCgFShrED5gtRzkTHnftN8BgKfLTihkxxqNcXbHJDXtiV2/uHk0VelRC6H2PPImNe3SaQ7m8GZ4QdqAG2rlYVsxaotyfssnRDSVqw4kLrkLm8bS4lmyZMnyr/gKhYf/6xZ6juwAAAAASUVORK5CYII=" alt=""><span class="role">Release Engineer — Intel</span> <span class="dates">· July 2019 – August 2021</span><ul>
-<li>Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and C++ installer.</li>
+<li>Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and installer.</li>
 </ul></div>
 <h2>Tech Stack</h2>
 <ul class="plain"><li><span class="stack-label">AI infrastructure:</span> Harness, Agents workflow, RAG, CAG, vLLM, VeRL, PyTorch, Kubernetes</li></ul>
@@ -232,7 +232,7 @@
 <div class="summary">ML/LLMOps-инженер — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.</div>
 <div class="sblocks">
 <div class="sblock"><span class="sblock-l">Оптимизация инференса</span> — EPLB-размещение экспертов MoE + квантизация FP8/INT8: отвечаю от разработки алгоритма до multi-node-деплоя в vLLM, бенчмарков и дашбордов; LLMOps проекта квантизации — ноутбук → модель → сервис, цикл исследований быстрее в 3 раза.</div>
-<div class="sblock"><span class="sblock-l">Serving и планирование</span> — Симулятор disaggregated Prefill/Decode (C++): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM.</div>
+<div class="sblock"><span class="sblock-l">Serving и планирование</span> — Симулятор disaggregated Prefill/Decode (Python): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM.</div>
 <div class="sblock"><span class="sblock-l">Предиктивная надёжность</span> — Прогнозирование отказов памяти (NUMA/Вейбулл) + кластеризация телеметрии оптики: отвечаю за +10% доступности кластера и снижение издержек в 2 раза.</div>
 </div>
 <h2>Опыт работы</h2>
@@ -240,7 +240,7 @@
 <li>Комбинаторные алгоритмы размещения экспертов MoE (EPLB), совместно оптимизирующие маппинг «эксперт → GPU» и all-to-all-коммуникации, чтобы минимизировать перегрузку сети и хвостовую задержку; та же платформа использовалась для multi-node-деплоя оптимизированных EPLB-алгоритмов в vLLM, запуска бенчмарков и построения подробных дашбордов.</li>
 <li>LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза.</li>
 <li>Глубокое знание стека обслуживания: continuous batching и вытесняющее планирование, fused-коммуникации, квантизация FP8/INT8, спекулятивное декодирование и trade-off оптимизации.</li>
-<li>Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на C++ системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.</li>
+<li>Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.</li>
 <li>NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза. <a class="doc-badge" href="https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11" target="_blank" rel="noopener">📄 документация</a></li>
 <li>Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров повысила доступность кластера на +10%.</li>
 </ul></div>
@@ -253,7 +253,7 @@
 <li>Ускорил тестирование сложных автомобильных GPS-систем с помощью Robot Framework</li>
 </ul></div>
 <div class="job"><img class="cicon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACn0lEQVRYhe2UTWyLcRzHP7+2a7rNxGtsLkiMZeEoEnbwsg11JBIkDk7rtsbBEotTj4Ywr90ODhwQHDi0y0Z0hBDKFjLCRRB76bKXdi9d1j7Pz6FdKTOdSBz0c3qe38v3933yf35/yJIlS5b/HQHA5atCxY3oC7w7D2TUWetbi2lxUGB7T0NFOKOe5mAOHaFOAByWchq391gAUFkMWgqyImPrhtzCNJ8xGt+YcU9PriTmaClqzQGwAWDTFgwGsUh3xmJ/iYSBRctfMT70jrxYDFXhyOM5ABwvG8ETsDEQXYU1t5vGzcM/KajmUdeaz8ltY6mYJ2AjFC+mgO7fHU/iCPo+1hMJR+iLXsJ9t4hIOEIkHKHav5/e8UFi2sXE+BBVvqvUteanKZh6k9F4MDnYgct/gt7oCObkG8KTw7h8j6ltLZnZwK9QvQLyFJH7ychexoyjaTXCW6ADgN7xy6jWIfQjch0kiLIBw3iE27949gaQwzQ5K/E6tyJyLhncla5gqaNp5z6qW8qAPYg8xzFvNV7nXpqc6xBpQHUhcamfboJtxvl2+7Vvg+QOhrpRlk1bqzq1DYVMDLfh8k9l5ibz62dvYH7RUOrZpB8ASfaomgAY5tQqCyioKkLsO5UBhADol9kbmAmhH6UEkZWJd32CAiI2HJbdnN4+CEBNixOxdnK+shtPl/1Hmd/8AzMZkGcAKKeo8gfwOh8gchvVpUSNz1T523D5XmOYPuKxlxy6t2Q6mT83kJt7DMGHqIIWAuCYtw84jSCgFShrED5gtRzkTHnftN8BgKfLTihkxxqNcXbHJDXtiV2/uHk0VelRC6H2PPImNe3SaQ7m8GZ4QdqAG2rlYVsxaotyfssnRDSVqw4kLrkLm8bS4lmyZMnyr/gKhYf/6xZ6juwAAAAASUVORK5CYII=" alt=""><span class="role">Release-инженер — Intel</span> <span class="dates">· Июль 2019 – Август 2021</span><ul>
-<li>Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация на Python/Bash и инсталлятор на C++.</li>
+<li>Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация на Python/Bash и инсталлятор.</li>
 </ul></div>
 <h2>Технологии</h2>
 <ul class="plain"><li><span class="stack-label">AI-инфраструктура:</span> Harness, Agents workflow, RAG, CAG, vLLM, VeRL, PyTorch, Kubernetes</li></ul>

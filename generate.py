@@ -45,7 +45,7 @@ I18N = {
             "ML/LLMOps Engineer — owns the full lifecycle of production LLM serving and inference optimization.",
             [
                 ("Inference optimization", "EPLB MoE expert placement + FP8/INT8 quantization: responsible from algorithm design to multi-node vLLM deployment, benchmarks, and dashboards; LLMOps for a quantization project — notebook → deployed model → benchmarks, 3× faster research."),
-                ("Serving & scheduling", "Disaggregated Prefill/Decode simulator (C++): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery."),
+                ("Serving & scheduling", "Disaggregated Prefill/Decode simulator (Python): responsible for selecting TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO and steer vLLM recovery."),
                 ("Predictive reliability", "NUMA/Weibull memory-failure forecasting + optical-power telemetry clustering: responsible for +10% cluster availability and 2× lower repair costs."),
             ],
         ),
@@ -55,7 +55,7 @@ I18N = {
                     "Combinatorial EPLB MoE expert-placement algorithms that co-optimize expert-to-GPU mapping with all-to-all communication to minimize network congestion and tail latency; the same platform was used for multi-node deployment of the optimized EPLB algorithms in vLLM, running benchmarks, and building detailed dashboards.",
                     "LLMOps for an LLM quantization project: owned the full lifecycle from research notebook → quantized model → deployed service and benchmarks, speeding up the research cycle by 3×.",
                     "Deep knowledge across the serving stack: continuous batching and preemptive scheduling, fused communication operators, FP8/INT8 quantization, speculative decoding, and optimization trade-offs.",
-                    "Disaggregated Prefill/Decode simulator — C++ discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.",
+                    "Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and Markov request traffic; selects TP/DP/SP/EP topology and scheduling policy to hold 99.99% SLO, and steers vLLM recovery for RL rollouts.",
                     ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model that raised cluster availability by +10%.",
                 ]),
@@ -68,7 +68,7 @@ I18N = {
                     "Sped up testing for complex GPS automotive systems with Robot Framework",
                 ]),
                 ('job', 'intel', "Release Engineer — Intel", "July 2019 – August 2021", [
-                    "Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and C++ installer.",
+                    "Supported Intel OneAPI HPC release infrastructure: Python/Bash automation and installer.",
                 ]),
             ]),
             ("Tech Stack", [
@@ -115,7 +115,7 @@ I18N = {
             "ML/LLMOps-инженер — владеет полным циклом эксплуатации LLM в продакшене и оптимизацией инференса.",
             [
                 ("Оптимизация инференса", "EPLB-размещение экспертов MoE + квантизация FP8/INT8: отвечаю от разработки алгоритма до multi-node-деплоя в vLLM, бенчмарков и дашбордов; LLMOps проекта квантизации — ноутбук → модель → сервис, цикл исследований быстрее в 3 раза."),
-                ("Serving и планирование", "Симулятор disaggregated Prefill/Decode (C++): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM."),
+                ("Serving и планирование", "Симулятор disaggregated Prefill/Decode (Python): отвечаю за выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99% и восстановление vLLM."),
                 ("Предиктивная надёжность", "Прогнозирование отказов памяти (NUMA/Вейбулл) + кластеризация телеметрии оптики: отвечаю за +10% доступности кластера и снижение издержек в 2 раза."),
             ],
         ),
@@ -125,7 +125,7 @@ I18N = {
                     "Комбинаторные алгоритмы размещения экспертов MoE (EPLB), совместно оптимизирующие маппинг «эксперт → GPU» и all-to-all-коммуникации, чтобы минимизировать перегрузку сети и хвостовую задержку; та же платформа использовалась для multi-node-деплоя оптимизированных EPLB-алгоритмов в vLLM, запуска бенчмарков и построения подробных дашбордов.",
                     "LLMOps для проекта квантизации LLM: вёл весь цикл от исследовательского ноутбука → квантованная модель → задеплоенный сервис и бенчмарки, ускорив цикл исследований в 3 раза.",
                     "Глубокое знание стека обслуживания: continuous batching и вытесняющее планирование, fused-коммуникации, квантизация FP8/INT8, спекулятивное декодирование и trade-off оптимизации.",
-                    "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на C++ системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.",
+                    "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и марковским трафиком запросов; выбор топологии TP/DP/SP/EP и политики планирования для удержания SLO 99,99%; восстановление vLLM для RL-прогонов.",
                     ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) благодаря раннему предупреждению снизили издержки от ошибок памяти в big data приложениях в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров повысила доступность кластера на +10%.",
                 ]),
@@ -138,7 +138,7 @@ I18N = {
                     "Ускорил тестирование сложных автомобильных GPS-систем с помощью Robot Framework",
                 ]),
                 ('job', 'intel', "Release-инженер — Intel", "Июль 2019 – Август 2021", [
-                    "Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация на Python/Bash и инсталлятор на C++.",
+                    "Поддерживал release-инфраструктуру Intel OneAPI HPC: автоматизация на Python/Bash и инсталлятор.",
                 ]),
             ]),
             ("Технологии", [
@@ -517,8 +517,8 @@ function toggleLike() {
 </script>'''
 
 SEO_HEAD = '''
-<meta name="description" content="Danilov Sergey Dmitrievich — LLM Inference R&D Engineer (Huawei). Distributed LLM inference, GPU orchestration, MoE, vLLM, PyTorch, C++, Kubernetes. Saint Petersburg, Russia.">
-<meta name="keywords" content="LLM inference engineer, ML engineer, AI engineer, distributed systems, GPU orchestration, vLLM, MoE, PyTorch, C++, Kubernetes, XGBoost, RAG, Sergey Danilov, Danilov Sergey, resume, CV, Saint Petersburg">
+<meta name="description" content="Danilov Sergey Dmitrievich — LLM Inference R&D Engineer (Huawei). Distributed LLM inference, GPU orchestration, MoE, vLLM, PyTorch, Kubernetes. Saint Petersburg, Russia.">
+<meta name="keywords" content="LLM inference engineer, ML engineer, AI engineer, distributed systems, GPU orchestration, vLLM, MoE, PyTorch, Kubernetes, XGBoost, RAG, Sergey Danilov, Danilov Sergey, resume, CV, Saint Petersburg">
 <meta name="author" content="Danilov Sergey Dmitrievich">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://geniusserg.github.io/">
@@ -552,7 +552,7 @@ SEO_HEAD = '''
     "https://github.com/geniusserg",
     "https://scholar.google.com/citations?user=sD1qs3QAAAAJ"
   ],
-  "knowsAbout": ["LLM inference", "distributed systems", "GPU orchestration", "vLLM", "MoE", "PyTorch", "C++", "Kubernetes", "XGBoost", "RAG", "recommender systems"]
+  "knowsAbout": ["LLM inference", "distributed systems", "GPU orchestration", "vLLM", "MoE", "PyTorch", "Kubernetes", "XGBoost", "RAG", "recommender systems"]
 }
 </script>
 '''
