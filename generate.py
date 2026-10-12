@@ -47,10 +47,9 @@ I18N = {
                 ("Inference optimization", "My tasks include:", [
                     "Choosing the best DP/TP strategy by modeling 10k-node inference clusters",
                     "tuning replica scheduling and experimenting with different MoE EPLB placement strategies",
-                    "reliability-aware scheduling of individual inference-cluster elements using statistical approaches and discrete-event simulations",
+                    "inference strategies considering the reliability of individual inference-cluster elements (memory, NPUs, network, software — vLLM, VeRL, Agents) based on statistical approaches and discrete-event simulations",
                     "LLMOps methodologies for serving and deploying optimization code, including for use in multi-agent systems",
                 ]),
-                ("Predictive reliability", "Responsible for failure forecasting and availability evaluation (Weibull modeling) of inference-cluster hardware (memory, NPUs, network) and software (vLLM, VeRL, agent workflows)."),
             ],
         ),
         'sections': [
@@ -121,10 +120,9 @@ I18N = {
                 ("Оптимизация инференса", "В мои задачи входят:", [
                     "выбор лучшей DP/TP-стратегии через моделирование инференс-кластеров на 10 тыс. узлов",
                     "настройка планирования реплик и эксперименты с различными стратегиями размещения MoE EPLB",
-                    "планирование с учётом надёжности отдельных элементов инференс-кластера на основе статистических подходов и дискретно-событийных симуляций",
+                    "стратегии инференса с учётом надёжности отдельных элементов инференс-кластера (память, NPU, сеть, ПО — vLLM, VeRL, Agents) на основе статистических подходов и дискретно-событийных симуляций",
                     "LLMOps-методологии для обслуживания и деплоя кода оптимизации, в том числе для использования в мульти-агентных системах",
                 ]),
-                ("Предиктивная надёжность", "Отвечаю за прогнозирование отказов и оценку доступности аппаратной части инференс-кластера (память, NPU, сеть) и ПО (vLLM, VeRL, agent-workflow)."),
             ],
         ),
         'sections': [
