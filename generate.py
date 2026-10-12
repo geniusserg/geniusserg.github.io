@@ -56,6 +56,7 @@ I18N = {
                     "Disaggregated Prefill/Decode simulator — Python discrete-event simulation of a prefill/decode serving system with KV-cache-aware load balancing and a Markov request-traffic generator; selects TP/DP/SP/EP topology, scheduling, and fault-recovery policy to hold 99.99% SLO. The same simulator was used to test the RL (VeRL) rollout-worker recovery strategy, cutting recovery time from 10 to 5 minutes and keeping the TPOT drop under failure scenarios to no more than 5%.",
                     ("NUMA-aware stress testing reached 95% of theoretical bandwidth; Weibull MTTR modeling + XGBoost failure forecasting cut repair costs by 2×.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Time-series clustering of optical-power telemetry flags degrading links early; a minimal-parameter model (1M params) that runs on small chips raised cluster availability by +10% (no signal-to-noise requirement — raw optical-sensor data only). Used sktime for statistical and ML time-series analysis and PyTorch for clustering and pattern discovery.",
+                    "Integrated my projects as MCP tools into the internal Harness agent lab.",
                 ]),
                 ('job', 'itmo', "ML Engineer — ITMO University", "November 2023 – September 2024", [
                     "Sber & ITMO: CTGAN user emulator; improved BiVAE recommendation MAP@5 by 3%.",
@@ -124,6 +125,7 @@ I18N = {
                     "Симулятор disaggregated Prefill/Decode — дискретно-событийное моделирование на Python системы prefill/decode-обслуживания с балансировкой нагрузки с учётом KV-кэша и генератором марковского трафика запросов; выбор топологии TP/DP/SP/EP, политики планирования и восстановления после сбоев для удержания SLO 99,99%. Тот же симулятор использовался для тестирования стратегии восстановления RL-воркеров (VeRL): время восстановления снижено с 10 до 5 минут, а падение TPOT при сбоях — не более 5%.",
                     ("NUMA-осознанное стресс-тестирование достигло 95% теоретической пропускной способности; моделирование MTTR (распределение Вейбулла) + прогнозирование отказов (XGBoost) снизили издержки от ошибок памяти в два раза.", "https://support.huaweicloud.com/intl/en-us/usermanual-server-modelarts/usermanual-server-0036.html#section11"),
                     "Кластеризация временных рядов телеметрии оптической мощности заранее выявляет деградирующие каналы; модель с минимальным числом параметров (1 млн параметров), работающая на малых чипах, повысила доступность кластера на +10% (без требования к signal-to-noise — только сырые данные оптических датчиков). Использовал sktime для статистического и ML-анализа временных рядов и PyTorch для кластеризации и поиска паттернов.",
+                    "Интегрировал свои проекты как MCP-инструменты во внутреннюю лабораторию Harness-агентов.",
                 ]),
                 ('job', 'itmo', "ML-инженер — Университет ИТМО", "Ноябрь 2023 – Сентябрь 2024", [
                     "Сбер и ИТМО: эмулятор пользователей на CTGAN; улучшил MAP@5 рекомендательной системы BiVAE на 3%.",
