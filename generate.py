@@ -94,7 +94,7 @@ I18N = {
             ]),
             ("Competitions", [
                 ('entry', None, "Name That LLM — Kaggle competition", "https://www.kaggle.com/competitions/name-that-llm/overview", [
-                    ("End-to-end LLM text attribution pipeline: ModernBERT with SDPA, contrastive fine-tuning, classification by cosine similarity of embeddings. Leaderboard score: 0.3.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
+                    ("End-to-end LLM text attribution pipeline: ModernBERT with SDPA, contrastive fine-tuning, classification by cosine similarity of embeddings. Leaderboard score: 0.19.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
                 ]),
                 ('entry', None, "ScienceRAG — Research assistant agent based on GigaChat", None, [
                     ("ScienceRAG: improved ArXiv RAG retrieval with a GigaChat-based agent.", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
@@ -170,7 +170,7 @@ I18N = {
             ]),
             ("Хакатоны", [
                 ('entry', None, "Name That LLM — соревнование Kaggle", "https://www.kaggle.com/competitions/name-that-llm/overview", [
-                    ("End-to-end пайплайн атрибуции LLM-текстов: ModernBERT с SDPA, contrastive fine-tuning, классификация по cosine similarity эмбеддингов. Leaderboard score: 0.3.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
+                    ("End-to-end пайплайн атрибуции LLM-текстов: ModernBERT с SDPA, contrastive fine-tuning, классификация по cosine similarity эмбеддингов. Leaderboard score: 0.19.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
                 ]),
                 ('entry', None, "ScienceRAG — исследовательский ассистент-агент на базе GigaChat", None, [
                     ("ScienceRAG: улучшил RAG-поиск по arXiv с помощью агента на основе GigaChat", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
