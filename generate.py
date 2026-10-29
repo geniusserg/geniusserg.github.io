@@ -4,17 +4,17 @@ import base64, html
 def esc(s):
     return html.escape(s, quote=False)
 
-photo = base64.b64encode(open('/tmp/cv_deploy/Data/image1-31.png', 'rb').read()).decode()
+photo = base64.b64encode(open('photo.png', 'rb').read()).decode()
 
 def icon_b64(path):
     return base64.b64encode(open(path, 'rb').read()).decode()
 
 company_icons = {
-    'huawei': icon_b64('/tmp/cv_deploy/icons/huawei.com.png'),
-    'itmo': icon_b64('/tmp/cv_deploy/icons/itmo.ru.png'),
-    'harman': icon_b64('/tmp/cv_deploy/icons/harman.com.png'),
-    'intel': icon_b64('/tmp/cv_deploy/icons/intel.com.png'),
-    'hse': icon_b64('/tmp/cv_deploy/icons/hse.ru.png'),
+    'huawei': icon_b64('icons/huawei.com.png'),
+    'itmo': icon_b64('icons/itmo.ru.png'),
+    'harman': icon_b64('icons/harman.com.png'),
+    'intel': icon_b64('icons/intel.com.png'),
+    'hse': icon_b64('icons/hse.ru.png'),
 }
 
 def icon_for(key):
@@ -29,6 +29,7 @@ BTN_SVG = {
 }
 
 YT_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg>'
+KG_ICON = '📓 '
 
 I18N = {
     'en': {
@@ -92,6 +93,9 @@ I18N = {
                 ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — statistical methods for studying brown adipose tissue and its effect on obesity treatment.", "https://doi.org/10.3390/jcm13144151"),
             ]),
             ("Competitions", [
+                ('entry', None, "Name That LLM — Kaggle competition", "https://www.kaggle.com/competitions/name-that-llm/overview", [
+                    ("End-to-end LLM text attribution pipeline: ModernBERT with SDPA, contrastive fine-tuning, classification by cosine similarity of embeddings. Leaderboard score: 0.3.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
+                ]),
                 ('entry', None, "ScienceRAG — Research assistant agent based on GigaChat", None, [
                     ("ScienceRAG: improved ArXiv RAG retrieval with a GigaChat-based agent.", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
                 ]),
@@ -165,6 +169,9 @@ I18N = {
                 ('bullet', "Markina et al., J. Clin. Med. 2024, 13, 4151 — статистические методы для исследования бурой жировой ткани и её влияния на лечение ожирения.", "https://doi.org/10.3390/jcm13144151"),
             ]),
             ("Хакатоны", [
+                ('entry', None, "Name That LLM — соревнование Kaggle", "https://www.kaggle.com/competitions/name-that-llm/overview", [
+                    ("End-to-end пайплайн атрибуции LLM-текстов: ModernBERT с SDPA, contrastive fine-tuning, классификация по cosine similarity эмбеддингов. Leaderboard score: 0.3.", "https://www.kaggle.com/code/sergeydanilovj/guessllm", 'kg'),
+                ]),
                 ('entry', None, "ScienceRAG — исследовательский ассистент-агент на базе GigaChat", None, [
                     ("ScienceRAG: улучшил RAG-поиск по arXiv с помощью агента на основе GigaChat", "https://youtu.be/ri2OOypFLXc?t=11214", 'yt'),
                 ]),
@@ -278,6 +285,9 @@ def build_page(lang):
                         if badge == 'yt':
                             seg = (f'{esc(st)} '
                                    f'<a class="yt" href="{esc(su)}" target="_blank" rel="noopener">{YT_ICON}YouTube</a>')
+                        elif badge == 'kg':
+                            seg = (f'{esc(st)} '
+                                   f'<a class="kg" href="{esc(su)}" target="_blank" rel="noopener">{KG_ICON}Notebook</a>')
                         else:
                             seg = f'<a href="{esc(su)}">{esc(st)}</a>' if su else esc(st)
                         parts.append(f'<li>{seg}</li>')
@@ -343,6 +353,10 @@ CSS = '''
         padding:2px 10px; border-radius:999px; font-weight:500; font-size:12px; vertical-align:middle;
         transition: transform .15s ease, box-shadow .15s ease; }
   .yt:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,0,0,.4); text-decoration:none; }
+  .kg { display:inline-flex; align-items:center; gap:5px; background:#20BEFF; color:#fff;
+        padding:2px 10px; border-radius:999px; font-weight:500; font-size:12px; vertical-align:middle;
+        transition: transform .15s ease, box-shadow .15s ease; }
+  .kg:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(32,190,255,.4); text-decoration:none; }
   .summary { margin:20px 0 4px; font-size:16px; line-height:1.6; color:#1f2937;
              border-left:4px solid var(--accent); padding:6px 0 6px 16px; }
   .sblocks { margin:8px 0 6px; display:flex; flex-direction:column; gap:4px; }
@@ -588,5 +602,5 @@ html_out = ['<!doctype html>',
 
 if __name__ == '__main__':
     out = '\n'.join(html_out)
-    open('/tmp/cv_deploy/index.html', 'w').write(out)
+    open('index.html', 'w').write(out)
     print("wrote index.html", len(out), "bytes")
